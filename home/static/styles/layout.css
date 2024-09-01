@@ -1,0 +1,17 @@
+body{
+    margin: 0;
+    
+    .layout{
+        margin: 0;
+        background-color:  rgba(255, 90, 96, 0.6667);
+        color: white;
+        display: flex;
+        height: 12vh;
+    
+        h1{
+            margin: 2vh; 
+            font-size: 50px;
+            font-weight: lighter;
+        }
+    }
+}

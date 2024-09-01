@@ -1,0 +1,14 @@
+{% extends 'layout.html' %}
+
+{% block content %}
+<div class="mb-3 card">
+    <div class="card-body">
+        <form class="form_register__form" method="post">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <button type="submit" id="submit" class="btn btn-primary">Registrarse</button>
+        </form>
+    </div>
+</div>
+
+{% endblock %}
