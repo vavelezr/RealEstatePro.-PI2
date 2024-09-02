@@ -40,7 +40,8 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'users.apps.UsersConfig',
     'home.apps.HomeConfig',
-    'django_sass'
+    'django_sass',
+    'valorizacion',
 ]
 
 MIDDLEWARE = [

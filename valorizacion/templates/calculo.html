@@ -1,0 +1,15 @@
+{% extends 'layout.html' %}
+{% load static %}
+{% block content %}
+<h1>Este será el apartado del formulario de proyeccion</h1>
+<form method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">Calcular</button>
+</form>
+
+{% if resultado %}
+    <p>{{ resultado }}</p>
+{% endif %}
+
+{% endblock content %}
