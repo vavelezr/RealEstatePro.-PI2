@@ -1,21 +1,20 @@
 {% extends 'layout.html' %}
 {% load static %}
-
 {% block content %}
 {% block extra_css %}
-<link rel="stylesheet" href="{% static 'styles/register.css' %}">
+<link rel="stylesheet" href="{% static 'styles/login.css' %}">
 {% endblock extra_css %}
 <div class="content">
     <div class="mb-3 card">
         <div class="card-body">
-            <form class="form_register__form" method="post">
+            <form class="form" method="post">
                 {% csrf_token %}
                 {{ form.as_p }}
-                <a href="{% url 'login' %}">Ya tengo una cuenta</a>
-                <button type="submit" id="submit" class="btn btn-custom">Registrarse</button>
+                <a href="{% url 'register' %}">No tengo una cuenta</a>
+                <button type="submit" id="submit" class="btn btn-custom">Iniciar sesión</button>
             </form>
         </div>
     </div>  
 </div>
 
-{% endblock %}
+{% endblock content %}

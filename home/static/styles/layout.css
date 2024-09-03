@@ -1,5 +1,9 @@
-body{
+html, body{
     margin: 0;
+    padding: 0;
+    min-height: 100%;
+    display: flex;
+    flex-direction: column;
     
     .layout{
         margin: 0;
@@ -7,11 +11,37 @@ body{
         color: white;
         display: flex;
         height: 12vh;
+
+        .layout__navbar{
+
+            .navbar-brand{
+                color: white;
+            }
+
+            .nav-link{
+                color: white;
+            }
+        }
+
     
         h1{
             margin: 2vh; 
             font-size: 50px;
             font-weight: lighter;
         }
+    }
+
+    .content{
+        flex: 1;
+    }
+    .layout__footer {
+        background-color: #f8f9fa;
+        text-align: center;
+        padding: 10px 0;
+        position: fixed;
+        left: 0;
+        bottom: 0;
+        width: 100%;
+        text-align: center;
     }
 }
