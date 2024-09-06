@@ -1,0 +1,59 @@
+h2 {
+    text-align: center;
+    width: 100%;
+}
+
+.enviar{
+    background-color: rgb(255, 145, 149);
+    color: white;
+    width: 100%;
+    margin-bottom: 3%;
+    margin-top: 20%;
+    border-radius: 50px;
+    border:0px;
+}
+
+/* Mover los botones hacia la mitad de la página */
+.col-md-6.d-flex.flex-column.align-items-center.justify-content-start {
+    align-items: center;  /* Esto mueve el contenido al centro horizontalmente */
+}
+
+form {
+    background-color: #eaeaea;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    width: 100%;
+}
+
+.text-center h5 {
+    margin-bottom: 10px;
+}
+
+.btn {
+    padding: 10px;
+    margin: 5px;
+}
+
+.result-box {
+    margin-top: 20px;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    background-color: #f9f9f9;
+    width: 100%;
+    max-width: 300px;
+}
+
+.row {
+    margin-bottom: 20px;
+}
+
+footer {
+    margin-top: 30px;
+}
+
+.img-fluid {
+    max-width: 100%;
+    height: auto;
+}
