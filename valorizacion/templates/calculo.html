@@ -1,15 +1,149 @@
 {% extends 'layout.html' %}
 {% load static %}
+
 {% block content %}
-<h1>Este será el apartado del formulario de proyeccion</h1>
-<form method="post">
-    {% csrf_token %}
-    {{ form.as_p }}
-    <button type="submit">Calcular</button>
-</form>
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'styles/calculo.css' %}">
+{% endblock extra_css %}
+<div class="container-fluid">
+    <div class="row">
+        <h2 class="mb-4 text-center">Formulario de Proyección de Valor</h2>
+        <!-- Formulario -->
+        <div class="col-md-6 d-flex flex-column align-items-start justify-content-center">
+            <form method="post">
+                {% csrf_token %}
+                <div class="row mb-3">
+                    <label for="id_barrio" class="col-sm-4 col-form-label">Barrio:</label>
+                    <div class="col-sm-8">
+                        {{ form.barrio }}
+                    </div>
+                </div>
+                <div class="row mb-3">
+                    <label for="id_direccion" class="col-sm-4 col-form-label">Dirección:</label>
+                    <div class="col-sm-8">
+                        {{ form.direccion }}
+                    </div>
+                </div>
+                <div class="row mb-3">
+                    <label for="id_tipo" class="col-sm-4 col-form-label">Tipo:</label>
+                    <div class="col-sm-8">
+                        {{ form.tipo }}
+                    </div>
+                </div>
+                <div class="row mb-3">
+                    <label for="id_latitud" class="col-sm-4 col-form-label">Latitud:</label>
+                    <div class="col-sm-8">
+                        {{ form.latitud }}
+                    </div>
+                </div>
+                <div class="row mb-3">
+                    <label for="id_longitud" class="col-sm-4 col-form-label">Longitud:</label>
+                    <div class="col-sm-8">
+                        {{ form.longitud }}
+                    </div>
+                </div>
+                <div class="row mb-3">
+                    <label for="id_precio" class="col-sm-4 col-form-label">Precio:</label>
+                    <div class="col-sm-8">
+                        {{ form.precio }}
+                    </div>
+                </div>
+                <div class="row mb-3">
+                    <label for="id_num_habitaciones" class="col-sm-4 col-form-label">Habitaciones:</label>
+                    <div class="col-sm-8">
+                        {{ form.num_habitaciones }}
+                    </div>
+                </div>
+                <div class="row mb-3">
+                    <label for="id_num_banos" class="col-sm-4 col-form-label">Baños:</label>
+                    <div class="col-sm-8">
+                        {{ form.num_banos }}
+                    </div>
+                </div>
+                <div class="row mb-3">
+                    <label for="id_tamano" class="col-sm-4 col-form-label">Tamaño (m²):</label>
+                    <div class="col-sm-8">
+                        {{ form.tamano }}
+                    </div>
+                </div>
+                <div class="row mb-3">
+                    <label for="id_precio_administracion" class="col-sm-4 col-form-label">Administración:</label>
+                    <div class="col-sm-8">
+                        {{ form.precio_administracion }}
+                    </div>
+                </div>
+                <div class="row mb-3">
+                    <label for="id_antiguedad" class="col-sm-4 col-form-label">Antigüedad:</label>
+                    <div class="col-sm-8">
+                        {{ form.antiguedad }}
+                    </div>
+                </div>
+                <div class="row mb-3">
+                    <label for="id_garajes" class="col-sm-4 col-form-label">Garajes:</label>
+                    <div class="col-sm-8">
+                        {{ form.garajes }}
+                    </div>
+                </div>
+                <div class="row mb-3">
+                    <label for="id_estrato" class="col-sm-4 col-form-label">Estrato:</label>
+                    <div class="col-sm-8">
+                        {{ form.estrato }}
+                    </div>
+                </div>
+                <div class="row mb-3">
+                    <label for="id_id" class="col-sm-4 col-form-label">ID:</label>
+                    <div class="col-sm-8">
+                        {{ form.id }}
+                    </div>
+                </div>
+                <div class="row w-100 mb-4">
+                    <div class="col-md-6 text-center">
+                        <button type="submit" class="enviar w-100">Calcular valorización futura</button>
+                    </div>
+                    <div class="col-md-6 text-center">
+                        <button type="button" class="enviar w-100">Calculo precio por noche</button>
+                    </div>
+                </div>
+            </form>
+        </div>
 
-{% if resultado %}
-    <p>{{ resultado }}</p>
-{% endif %}
+        <!-- Sección de Botones, Gráficos y Resultados a la derecha -->
+        <div class="col-md-6 d-flex flex-column align-items-center justify-content-start">
+            {% comment %} <div class="row w-100 mb-4">
+                <div class="col-md-6 text-center">
+                    <button type="submit" class="enviar w-100">Calcular valorización futura</button>
+                </div>
+                <div class="col-md-6 text-center">
+                    <button type="button" class="enviar w-100">Calculo precio por noche</button>
+                </div>
+            </div> {% endcomment %}
 
-{% endblock content %}
+            <div class="row w-100 mb-4">
+                <div class="col-md-6 text-center">
+                    <div id="grafico1" class="result-box">
+                        <!-- Placeholder para gráfico 1 -->
+                        <img src="{% static 'images/grafico1_placeholder.png' %}" alt="Gráfico 1" class="img-fluid">
+                    </div>
+                </div>
+                <div class="col-md-6 text-center">
+                    <div id="grafico2" class="result-box">
+                        <!-- Placeholder para gráfico 2 -->
+                        <img src="{% static 'images/grafico2_placeholder.png' %}" alt="Gráfico 2" class="img-fluid">
+                    </div>
+                </div>
+            </div>
+
+            <div class="row w-100">
+                <div class="col-md-6 text-center">
+                    <h5>Valor estimado:</h5>
+                    <h2>{{ resultado.valor_estimado }}</h2>
+                </div>
+                <div class="col-md-6 text-center">
+                    <h5>Valor por noche:</h5>
+                    <h2>{{ resultado.valor_noche }}</h2>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

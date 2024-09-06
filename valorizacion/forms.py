@@ -25,27 +25,18 @@ class PropertyForm(forms.Form):
     ]
 
     
-
     barrio = forms.ChoiceField(choices=BARRIOS_CHOICES, label="Ingrese Barrio")
     direccion = forms.CharField(max_length=100, label="Dirección de la propiedad")
     tipo = forms.ChoiceField(choices=TIPO_CHOICES, label="Seleccionar")
-    num_habitaciones = forms.IntegerField(label="Número de habitaciones")
-    num_banos = forms.IntegerField(label="Número de baños")
-    tamano = forms.IntegerField(label="Tamaño propiedad en m2")
-    
-    
-    #los booleanos
-    wifi = forms.BooleanField(label="Wi-Fi", required=False)
-    aire_acondicionado = forms.BooleanField(label="Aire acondicionado", required=False)
-    balcon = forms.BooleanField(label="Balcón", required=False)
-    terraza = forms.BooleanField(label="Terraza", required=False)
-    jardin = forms.BooleanField(label="Jardín", required=False)
-    piscina = forms.BooleanField(label="Piscina", required=False)
-    calefaccion = forms.BooleanField(label="Calefacción", required=False)
-    lavadora = forms.BooleanField(label="Lavadora", required=False)
-    secadora = forms.BooleanField(label="Secadora", required=False)
-    chimenea = forms.BooleanField(label="Chimenea", required=False)
-    jacuzzi = forms.BooleanField(label="Jacuzzi", required=False)
-    sauna = forms.BooleanField(label="Sauna", required=False)
-    juegos_de_mesa = forms.BooleanField(label="Juegos de mesa", required=False)
-    parqueadero = forms.BooleanField(label="Parqueadero", required=False)
+    latitud = forms.CharField(max_length=50)
+    longitud = forms.CharField(max_length=50)
+    precio = forms.IntegerField()
+    num_habitaciones = forms.IntegerField()
+    num_banos = forms.IntegerField()
+    tamano = forms.FloatField(label='Tamaño (Área)')
+    precio_administracion = forms.IntegerField()
+    antiguedad = forms.IntegerField()
+    garajes = forms.IntegerField()
+    estrato = forms.IntegerField(min_value=1, max_value=6)
+    id=forms.IntegerField()
+
