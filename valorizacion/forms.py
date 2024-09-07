@@ -2,21 +2,21 @@ from django import forms
 
 class PropertyForm(forms.Form):
     BARRIOS_CHOICES = [
-        ('el_poblado', 'El Poblado'),
-        ('laureles_estadio', 'Laureles-Estadio'),
-        ('belen', 'Belén'),
-        ('la_america', 'La América'),
-        ('villa_hermosa', 'Villa Hermosa'),
-        ('robledo', 'Robledo'),
+        ('El Poblado', 'El Poblado'),
+        ('Laureles', 'Laureles-Estadio'),
+        ('Belén', 'Belén'),
+        ('La América', 'La América'),
+        ('Villa Hermosa', 'Villa Hermosa'),
+        ('Robledo', 'Robledo'),
         ('Castilla', 'Castilla'),
-        ('buenos_aires', 'Buenos Aires'),
-        ('san_antonio_de_prado', 'San Antonio de Prado'),
-        ('aranjuez', 'Aranjuez'),
-        ('doce_de_octubre', 'Doce de Octubre'),
-        ('san_javier', 'San Javier'),
-        ('manrique', 'Manrique'),
-        ('santa_cruz', 'Santa Cruz'),
-        ('popular', 'Popular'),
+        ('Buenos Aires', 'Buenos Aires'),
+        ('San Antonio de Prado', 'San Antonio de Prado'),
+        ('Aranjuez', 'Aranjuez'),
+        ('Doce de Octubre', 'Doce de Octubre'),
+        ('San Javier', 'San Javier'),
+        ('Manrique', 'Manrique'),
+        ('Santa cruz', 'Santa Cruz'),
+        ('Barrio Popular', 'Popular'),
     ]
 
     TIPO_CHOICES = [

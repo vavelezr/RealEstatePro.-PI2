@@ -41,8 +41,10 @@ def calculo(request):
 
             data = GetCsvData()
             predictions = ArimaxPrediction(datos_propiedad, data)
+            
+            
 
-            datos_propiedad['valor_estimado'] = predictions
+            datos_propiedad['valor_estimado'] =  predictions #f'{predictions[0]:.5f}'
 
             print("Forms validado")
             print(datos_propiedad)
