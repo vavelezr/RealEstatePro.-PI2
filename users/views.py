@@ -1,10 +1,7 @@
 from django.shortcuts import render
-from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.views import LoginView
 from django.contrib import messages
 from .forms import CustomLoginForm, UserRegisterForm
-
-# Create your views here.
 
 
 def register(request): 
@@ -18,6 +15,7 @@ def register(request):
         form = UserRegisterForm()
     context = {'form': form}
     return render(request, 'register.html', context)
+
 
 class CustomLoginView(LoginView):
     form_class = CustomLoginForm
