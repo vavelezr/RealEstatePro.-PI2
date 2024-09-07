@@ -4,8 +4,8 @@ from statsmodels.tsa.statespace.sarimax import SARIMAX
 from sklearn.preprocessing import StandardScaler
 
 def GetCsvData():
-    file_path1 = 'D:\Integrador2_pr\\arima-test\medellin_properties_with_ids.csv'
-    file_path2 = 'D:\Integrador2_pr\\arima-test\price_history_simulated.csv'
+    file_path1 = 'D:\Integrador2_pr\proyecto\\valorizacion\csv\medellin_properties_with_ids.csv'
+    file_path2 = 'D:\Integrador2_pr\proyecto\\valorizacion\csv\price_history_simulated.csv'
 
     df_properties = pd.read_csv(file_path1)
     df_price_history = pd.read_csv(file_path2)
@@ -34,25 +34,27 @@ def GetModelData(data, neighbourhood):
     new_data = data[data['neighbourhood'] == neighbourhood].copy()
 
     if new_data.empty:
-        print(f"No data avaliable for the neighbuorhood: {neighbourhood}")
+        print(f"No data avaliable for the neighbourhood: {neighbourhood}")
         return 
     return new_data
 
 def ArimaxPrediction(user_data_dict, merged_data):
     user_data = pd.DataFrame([user_data_dict])
 
-    user_neighbuorhood = user_data['neighbuorhood'].iloc[0]
+    print(user_data.head())
 
-    neighbuorhood_data = GetModelData(merged_data, user_neighbuorhood)
+    user_neighbourhood = user_data['neighbourhood'].iloc[0]
 
-    if neighbuorhood_data.empty:
+    neighbourhood_data = GetModelData(merged_data, user_neighbourhood)
+
+    if neighbourhood_data.empty:
         return
     
-    #neighbuorhood_data.set_index('date', inplace=True)
+    #neighbourhood_data.set_index('date', inplace=True)
 
-    target_ts = neighbuorhood_data['price_x']
+    target_ts = neighbourhood_data['price_x']
 
-    exog_vars = neighbuorhood_data[['rooms','baths','area','age','garages','stratum']] #'latitude','longitude',
+    exog_vars = neighbourhood_data[['rooms','baths','area','age','garages','stratum']] #'latitude','longitude',
 
     scaler_price = StandardScaler()
     target_ts_scaled = scaler_price.fit_transform(target_ts.values.reshape(-1,1)).flatten()
@@ -79,12 +81,12 @@ def ArimaxPrediction(user_data_dict, merged_data):
 
     predictions = scaler_price.inverse_transform(predictions_scaled.reshape(-1,1)).flatten()
 
-    print(f"Predictios for the user's property in neighbuorhood {user_neighbuorhood}")
+    print(f"Predictios for the user's property in neighbourhood {user_neighbourhood}")
     print(predictions)
 
     
-    '''neighbuorhood_data.info()
-    print(neighbuorhood_data.index)'''
+    '''neighbourhood_data.info()
+    print(neighbourhood_data.index)'''
     return predictions
 
 '''
@@ -96,18 +98,18 @@ def TestTolerance(property_id, merged_data):
     if property_data.empty:
         return
 
-    property_neighbuorhood = property_data['neighbourhood'].iloc[0]
+    property_neighbourhood = property_data['neighbourhood'].iloc[0]
 
-    neighbuorhood_data = GetModelData(merged_data, property_neighbuorhood)
+    neighbourhood_data = GetModelData(merged_data, property_neighbourhood)
 
-    if neighbuorhood_data.empty:
+    if neighbourhood_data.empty:
         return
     
-    #neighbuorhood_data.set_index('date', inplace=True)
+    #neighbourhood_data.set_index('date', inplace=True)
 
-    target_ts = neighbuorhood_data['price_x']
+    target_ts = neighbourhood_data['price_x']
 
-    exog_vars = neighbuorhood_data[['rooms','baths','area','age','garages','stratum']] #'latitude','longitude',
+    exog_vars = neighbourhood_data[['rooms','baths','area','age','garages','stratum']] #'latitude','longitude',
 
     scaler_price = StandardScaler()
     target_ts_scaled = scaler_price.fit_transform(target_ts.values.reshape(-1,1)).flatten()
@@ -147,7 +149,7 @@ def TestTolerance(property_id, merged_data):
 #data = GetCsvData()
 
 '''user_data_dict = {
-    'neighbuorhood': 'Laureles',
+    'neighbourhood': 'Laureles',
     'rooms': 3,
     'baths': 2,
     'garages': 1,

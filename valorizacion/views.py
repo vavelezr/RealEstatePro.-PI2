@@ -1,5 +1,6 @@
 from django.shortcuts import render
 from .forms import PropertyForm
+from .arima_test import *
 
 def calculo(request):
     if request.method == 'POST':
@@ -22,20 +23,29 @@ def calculo(request):
             propiedad_id = form.cleaned_data['id']
 
             datos_propiedad = {
-                'barrio': barrio,
-                'latitud': latitud,
-                'longitud': longitud,
-                'tipo': tipo,
-                'precio': precio,
-                'num_habitaciones': num_habitaciones,
-                'num_banos': num_banos,
-                'tamano': tamano,
-                'precio_administracion': precio_administracion,
-                'antiguedad': antiguedad,
-                'garajes': garajes,
-                'estrato': estrato,
+                'neighbourhood': barrio,
+                'latitude': latitud,
+                'longitude': longitud,
+                'property_type': tipo,
+                'price': precio,
+                'rooms': num_habitaciones,
+                'baths': num_banos,
+                'area': tamano,
+                'administration_price': precio_administracion,
+                'age': antiguedad,
+                'garages': garajes,
+                'stratum': estrato,
                 'id': propiedad_id,
+                'valor_estimado':precio,
             }
+
+            data = GetCsvData()
+            predictions = ArimaxPrediction(datos_propiedad, data)
+            
+            
+
+            datos_propiedad['valor_estimado'] =  predictions #f'{predictions[0]:.5f}'
+
             print("Forms validado")
             print(datos_propiedad)
             # Retornar los datos procesados al template
