@@ -3,91 +3,102 @@ import numpy as np
 from statsmodels.tsa.statespace.sarimax import SARIMAX
 from sklearn.preprocessing import StandardScaler
 
+
 def GetCsvData():
-    file_path1 = 'D:\Integrador2_pr\\arima-test\medellin_properties_with_ids.csv'
-    file_path2 = 'D:\Integrador2_pr\\arima-test\price_history_simulated.csv'
+    file_path1 = "D:\Integrador2_pr\\arima-test\medellin_properties_with_ids.csv"
+    file_path2 = "D:\Integrador2_pr\\arima-test\price_history_simulated.csv"
 
     df_properties = pd.read_csv(file_path1)
     df_price_history = pd.read_csv(file_path2)
 
-
-    df_price_history['year'] = pd.to_datetime(df_price_history['year'], format='%Y')
-    df_price_history.set_index(['id', 'year'], inplace=True)
+    df_price_history["year"] = pd.to_datetime(df_price_history["year"], format="%Y")
+    df_price_history.set_index(["id", "year"], inplace=True)
 
     df_price_history = df_price_history.sort_index()
 
-    df_price_history = df_price_history[df_price_history['price'] < 1100000000]
+    df_price_history = df_price_history[df_price_history["price"] < 1100000000]
 
-    df_properties['latitude'] = pd.to_numeric(df_properties['latitude'], errors='coerce')
-    df_properties['longitude'] = pd.to_numeric(df_properties['longitude'], errors='coerce')
-    df_properties['garages'] = pd.to_numeric(df_properties['garages'], errors='coerce')
-    df_properties['neighbourhood'] = df_properties['neighbourhood'].astype('string')
+    df_properties["latitude"] = pd.to_numeric(
+        df_properties["latitude"], errors="coerce"
+    )
+    df_properties["longitude"] = pd.to_numeric(
+        df_properties["longitude"], errors="coerce"
+    )
+    df_properties["garages"] = pd.to_numeric(df_properties["garages"], errors="coerce")
+    df_properties["neighbourhood"] = df_properties["neighbourhood"].astype("string")
 
-    merged_data = pd.merge(df_price_history.reset_index(), df_properties, on='id')
-    merged_data.set_index('year', inplace=True)
+    merged_data = pd.merge(df_price_history.reset_index(), df_properties, on="id")
+    merged_data.set_index("year", inplace=True)
     merged_data_cleaned = merged_data.dropna()
 
     return merged_data_cleaned
 
 
 def GetModelData(data, neighbourhood):
-    new_data = data[data['neighbourhood'] == neighbourhood].copy()
+    new_data = data[data["neighbourhood"] == neighbourhood].copy()
 
     if new_data.empty:
         print(f"No data avaliable for the neighbuorhood: {neighbourhood}")
-        return 
+        return
     return new_data
+
 
 def ArimaxPrediction(user_data_dict, merged_data):
     user_data = pd.DataFrame([user_data_dict])
 
-    user_neighbuorhood = user_data['neighbuorhood'].iloc[0]
+    user_neighbuorhood = user_data["neighbuorhood"].iloc[0]
 
     neighbuorhood_data = GetModelData(merged_data, user_neighbuorhood)
 
     if neighbuorhood_data.empty:
         return
-    
-    #neighbuorhood_data.set_index('date', inplace=True)
 
-    target_ts = neighbuorhood_data['price_x']
+    # neighbuorhood_data.set_index('date', inplace=True)
 
-    exog_vars = neighbuorhood_data[['rooms','baths','area','age','garages','stratum']] #'latitude','longitude',
+    target_ts = neighbuorhood_data["price_x"]
+
+    exog_vars = neighbuorhood_data[
+        ["rooms", "baths", "area", "age", "garages", "stratum"]
+    ]  #'latitude','longitude',
 
     scaler_price = StandardScaler()
-    target_ts_scaled = scaler_price.fit_transform(target_ts.values.reshape(-1,1)).flatten()
+    target_ts_scaled = scaler_price.fit_transform(
+        target_ts.values.reshape(-1, 1)
+    ).flatten()
 
     scaler_exog = StandardScaler()
     exog_vars_scaled = scaler_exog.fit_transform(exog_vars)
-    
+
     target_ts_diff = np.diff(target_ts_scaled)
 
-    model = SARIMAX(target_ts_diff, exog=exog_vars_scaled[:-1], order=(1,1,1))
+    model = SARIMAX(target_ts_diff, exog=exog_vars_scaled[:-1], order=(1, 1, 1))
     model_fit = model.fit(disp=False)
 
+    user_exog_vars = user_data[
+        ["rooms", "baths", "area", "age", "garages", "stratum"]
+    ]  #'latitude','longitude',
 
-    user_exog_vars = user_data[['rooms','baths','area','age','garages','stratum']] #'latitude','longitude',
-
-    user_exog_vars_replicated = pd.concat([user_exog_vars]*5, ignore_index=True)
+    user_exog_vars_replicated = pd.concat([user_exog_vars] * 5, ignore_index=True)
 
     user_exog_vars_scaled = scaler_exog.transform(user_exog_vars_replicated)
-
 
     predictions_diff = model_fit.forecast(steps=5, exog=user_exog_vars_scaled)
 
     predictions_scaled = np.r_[target_ts_scaled[-1], predictions_diff].cumsum()
 
-    predictions = scaler_price.inverse_transform(predictions_scaled.reshape(-1,1)).flatten()
+    predictions = scaler_price.inverse_transform(
+        predictions_scaled.reshape(-1, 1)
+    ).flatten()
 
     print(f"Predictios for the user's property in neighbuorhood {user_neighbuorhood}")
     print(predictions)
 
-    
-    '''neighbuorhood_data.info()
-    print(neighbuorhood_data.index)'''
+    """neighbuorhood_data.info()
+    print(neighbuorhood_data.index)"""
     return predictions
 
-'''
+
+"""
 def TestTolerance(property_id, merged_data):
 
     property_data = merged_data[merged_data['id'] == property_id]
@@ -143,10 +154,10 @@ def TestTolerance(property_id, merged_data):
     
 
     return predictions
-'''
-#data = GetCsvData()
+"""
+# data = GetCsvData()
 
-'''user_data_dict = {
+"""user_data_dict = {
     'neighbuorhood': 'Laureles',
     'rooms': 3,
     'baths': 2,
@@ -163,19 +174,16 @@ def TestTolerance(property_id, merged_data):
 
 prediction = ArimaxPrediction(user_data_dict, data)
 
-'''#test = TestTolerance(40, data)
+"""  # test = TestTolerance(40, data)
 
-#merged_data_head = merged_data_cleaned.head()
+# merged_data_head = merged_data_cleaned.head()
 
-#print(merged_data_cleaned.dtypes)
-#print(merged_data_cleaned.isnull().sum())
-#print(merged_data_cleaned.head(20))
-
-
+# print(merged_data_cleaned.dtypes)
+# print(merged_data_cleaned.isnull().sum())
+# print(merged_data_cleaned.head(20))
 
 
-
-'''
+"""
 target = merged_data_cleaned['price_x'] #historical prices
 exog_vars = merged_data_cleaned[['latitude','longitude','rooms','baths','area','age','garages','stratum']] #'administration_price',  'neighbourhood' exogen variables 'property_type', 'neighbourhood',
 
@@ -196,4 +204,4 @@ predictions = model_fit.forecast(steps=len(test_target), exog=test_exogen)
 
 print(predictions[:5])
 print(test_target[:5])
-'''
+"""

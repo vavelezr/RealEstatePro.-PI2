@@ -2,5 +2,5 @@ from django.apps import AppConfig
 
 
 class ValorizacionConfig(AppConfig):
-    default_auto_field = 'django.db.models.BigAutoField'
-    name = 'valorizacion'
+    default_auto_field = "django.db.models.BigAutoField"
+    name = "valorizacion"
