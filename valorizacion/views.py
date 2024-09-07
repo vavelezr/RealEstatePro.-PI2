@@ -39,8 +39,8 @@ def calculate(request):
                 "price_estimated": price,
             }
 
-            data = GetCsvData()
-            predictions = ArimaxPrediction(data_property, data)
+            data = get_csv_data()
+            predictions = arimax_prediction(data_property, data)
 
             data_property["price_estimated"] = predictions  # f'{predictions[0]:.5f}'
 
