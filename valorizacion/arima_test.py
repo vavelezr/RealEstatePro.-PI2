@@ -2,15 +2,14 @@ import pandas as pd
 import numpy as np
 from statsmodels.tsa.statespace.sarimax import SARIMAX
 from sklearn.preprocessing import StandardScaler
-
+import os
 
 def GetCsvData():
-    file_path1 = (
-        "D:\Integrador2_pr\proyecto\\valorizacion\csv\medellin_properties_with_ids.csv"
-    )
-    file_path2 = (
-        "D:\Integrador2_pr\proyecto\\valorizacion\csv\price_history_simulated.csv"
-    )
+
+    base_dir = os.path.dirname(os.path.abspath(__file__))
+
+    file_path1 = os.path.join(base_dir, 'csv', 'medellin_properties_with_ids.csv')
+    file_path2 = os.path.join(base_dir, 'csv', 'price_history_simulated.csv')
 
     df_properties = pd.read_csv(file_path1)
     df_price_history = pd.read_csv(file_path2)
