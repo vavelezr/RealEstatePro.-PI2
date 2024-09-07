@@ -8,7 +8,7 @@ class PropertyForm(forms.Form):
         ('la_america', 'La América'),
         ('villa_hermosa', 'Villa Hermosa'),
         ('robledo', 'Robledo'),
-        ('castilla', 'Castilla'),
+        ('Castilla', 'Castilla'),
         ('buenos_aires', 'Buenos Aires'),
         ('san_antonio_de_prado', 'San Antonio de Prado'),
         ('aranjuez', 'Aranjuez'),
