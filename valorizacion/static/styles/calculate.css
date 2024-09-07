@@ -13,9 +13,9 @@ h2 {
     border:0px;
 }
 
-/* Mover los botones hacia la mitad de la página */
+
 .col-md-6.d-flex.flex-column.align-items-center.justify-content-start {
-    align-items: center;  /* Esto mueve el contenido al centro horizontalmente */
+    align-items: center;  
 }
 
 form {
