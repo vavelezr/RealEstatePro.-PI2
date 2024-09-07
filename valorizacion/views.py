@@ -36,6 +36,7 @@ def calculo(request):
                 'estrato': estrato,
                 'id': propiedad_id,
             }
+            
             print("Forms validado")
             print(datos_propiedad)
             # Retornar los datos procesados al template
