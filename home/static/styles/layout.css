@@ -4,7 +4,7 @@ html, body{
     min-height: 100%;
     display: flex;
     flex-direction: column;
-    
+
     .layout{
         margin: 0;
         background-color:  rgba(255, 90, 96, 0.6667);
@@ -14,6 +14,8 @@ html, body{
 
         .layout__navbar{
 
+            width: 100%;
+
             .navbar-brand{
                 color: white;
             }
@@ -21,11 +23,15 @@ html, body{
             .nav-link{
                 color: white;
             }
+
+            .option_item{
+               margin-right: 80vw;
+            }
         }
 
-    
+
         h1{
-            margin: 2vh; 
+            margin: 2vh;
             font-size: 50px;
             font-weight: lighter;
         }
