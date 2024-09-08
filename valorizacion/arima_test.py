@@ -48,52 +48,35 @@ def get_model_data(data, neighbourhood):
 
 def arimax_prediction(user_data_dict, merged_data):
     user_data = pd.DataFrame([user_data_dict])
-
-    print(user_data.head())
-
     user_neighbourhood = user_data["neighbourhood"].iloc[0]
-
     neighbourhood_data = get_model_data(merged_data, user_neighbourhood)
-
     if neighbourhood_data.empty:
         return neighbourhood_data
-
     # neighbourhood_data.set_index('date', inplace=True)
-
     target_ts = neighbourhood_data["price_x"]
-
     exog_vars = neighbourhood_data[
         ["rooms", "baths", "area", "age", "garages", "stratum"]
     ]  #'latitude','longitude',
-
-    scaler = StandardScaler()
-    target_ts_scaled = scaler.fit_transform(
+    scaler_price = StandardScaler()
+    target_ts_scaled = scaler_price.fit_transform(
         target_ts.values.reshape(-1, 1)
     ).flatten()
-
-    exog_vars_scaled = scaler.fit_transform(exog_vars)
-
+    scaler_exog = StandardScaler()
+    exog_vars_scaled = scaler_exog.fit_transform(exog_vars)
     target_ts_diff = np.diff(target_ts_scaled)
-
     model = SARIMAX(target_ts_diff, exog=exog_vars_scaled[:-1], order=(1, 1, 1))
     model_fit = model.fit(disp=False)
-
     user_exog_vars = user_data[
         ["rooms", "baths", "area", "age", "garages", "stratum"]
     ]  #'latitude','longitude',
-
-    #user_exog_vars_replicated = pd.concat([user_exog_vars] * 5, ignore_index=True)
-
-    user_exog_vars_scaled = scaler.transform(pd.concat([user_exog_vars] * 5, ignore_index=True))
-
+    user_exog_vars_replicated = pd.concat([user_exog_vars] * 5, ignore_index=True)
+    user_exog_vars_scaled = scaler_exog.transform(user_exog_vars_replicated)
     predictions_diff = model_fit.forecast(steps=5, exog=user_exog_vars_scaled)
-
     predictions_scaled = np.r_[target_ts_scaled[-1], predictions_diff].cumsum()
-
-    predictions = scaler.inverse_transform(
+    predictions = scaler_price.inverse_transform(
         predictions_scaled.reshape(-1, 1)
     ).flatten()
-
     print(f"Predictios for the user's property in neighbourhood {user_neighbourhood}")
     print(predictions)
+
     return predictions
