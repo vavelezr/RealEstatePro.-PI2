@@ -1,0 +1,16 @@
+{% extends 'layout.html' %}
+{% load static %}
+{% block content %}
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'styles/home.css' %}">
+{% endblock extra_css %}
+<div class="home_box">
+    <h1 class="welcome_message">Bienvenido a RealEstatePro</h1>
+    <hr>
+    <h3 class="welcome_description_message">Aqui podrás validar tus decisiones de inversión a través de análisis predictivos</h3>
+    <div class="home_button">
+        <a href="{% url 'calculo' %}"><button type="submit" id="submit" class="btn btn-custom">Calcular</button></a>
+    </div>
+</div>
+
+{% endblock content %}

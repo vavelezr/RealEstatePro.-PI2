@@ -1,0 +1,29 @@
+.home_box{
+    display: grid;
+    justify-content: space-evenly;
+    margin-top: 5vh;
+    flex: 1;
+    margin-top: 20vh;
+    place-items: center;
+}
+
+.welcome_message{
+    text-align: center;
+    font-style: oblique;
+}
+
+.welcome_description_message{
+    font-family: ui-rounded;
+}
+
+.btn-custom{
+    background-color: rgba(255, 90, 96, 1);
+    color: white;
+    width: 20vw;
+    margin-bottom: 3%;
+    margin-top: 5%;
+}
+
+.home_button{
+    display: flex;
+}
