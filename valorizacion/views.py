@@ -9,10 +9,10 @@ def calculate(request):
         print(form.errors)
         if form.is_valid():
             neighbourhood = form.cleaned_data["neighbourhood"]
-            latitude = form.cleaned_data["latitude"]
-            longitude = form.cleaned_data["longitude"]
+            #latitude = form.cleaned_data["latitude"]
+            #longitude = form.cleaned_data["longitude"]
             type = form.cleaned_data["type"]
-            price = form.cleaned_data["price"]
+            #price = form.cleaned_data["price"]
             num_rooms = form.cleaned_data["num_rooms"]
             num_banos = form.cleaned_data["num_banos"]
             size = form.cleaned_data["size"]
@@ -20,14 +20,14 @@ def calculate(request):
             age = form.cleaned_data["age"]
             garajes = form.cleaned_data["garajes"]
             stratum = form.cleaned_data["stratum"]
-            propiedad_id = form.cleaned_data["id"]
+            #propiedad_id = form.cleaned_data["id"]
 
             data_property = {
                 "neighbourhood": neighbourhood,
-                "latitude": latitude,
-                "longitude": longitude,
+                #"latitude": latitude,
+                #"longitude": longitude,
                 "property_type": type,
-                "price": price,
+                #"price": price,
                 "rooms": num_rooms,
                 "baths": num_banos,
                 "area": size,
@@ -35,8 +35,8 @@ def calculate(request):
                 "age": age,
                 "garages": garajes,
                 "stratum": stratum,
-                "id": propiedad_id,
-                "price_estimated": price,
+                "id": 1,
+                #"price_estimated": price,
             }
 
             data = get_csv_data()

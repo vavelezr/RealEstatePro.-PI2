@@ -17,16 +17,16 @@ def get_csv_data():
     df_price_history = df_price_history.sort_index()
 
     df_price_history = df_price_history[df_price_history["price"] < 1100000000]
-
+    
     df_properties["latitude"] = pd.to_numeric(
         df_properties["latitude"], errors="coerce"
     )
     df_properties["longitude"] = pd.to_numeric(
         df_properties["longitude"], errors="coerce"
     )
+    
     df_properties["garages"] = pd.to_numeric(df_properties["garages"], errors="coerce")
     df_properties["neighbourhood"] = df_properties["neighbourhood"].astype("string")
-
     merged_data = pd.merge(df_price_history.reset_index(), df_properties, on="id")
     merged_data.set_index("year", inplace=True)
     merged_data_cleaned = merged_data.dropna()
