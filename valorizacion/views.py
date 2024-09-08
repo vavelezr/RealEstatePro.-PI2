@@ -42,7 +42,9 @@ def calculate(request):
             data = get_csv_data()
             predictions = arimax_prediction(data_property, data)
 
-            data_property["price_estimated"] = predictions  # f'{predictions[0]:.5f}'
+            formatted_predictions = {f"{6 - i} año": f'{prediction:,.2f}' for i, prediction in enumerate(reversed(predictions))}
+            data_property["price_estimated"] = formatted_predictions
+
 
             print("Forms validado")
             print(data_property)

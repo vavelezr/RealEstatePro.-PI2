@@ -3,22 +3,23 @@ from django import forms
 
 class PropertyForm(forms.Form):
     BARRIOS_CHOICES = [
-        ("El Poblado", "El Poblado"),
-        ("Laureles", "Laureles-Estadio"),
-        ("Belén", "Belén"),
-        ("La América", "La América"),
-        ("Villa Hermosa", "Villa Hermosa"),
-        ("Robledo", "Robledo"),
-        ("Castilla", "Castilla"),
-        ("Buenos Aires", "Buenos Aires"),
-        ("San Antonio de Prado", "San Antonio de Prado"),
-        ("Aranjuez", "Aranjuez"),
-        ("Doce de Octubre", "Doce de Octubre"),
-        ("San Javier", "San Javier"),
-        ("Manrique", "Manrique"),
-        ("Santa cruz", "Santa Cruz"),
-        ("Barrio Popular", "Popular"),
+    ("Calasanz", "Calasanz"),
+    ("Laureles", "Laureles"),
+    ("El Poblado", "El Poblado"),
+    ("Robledo", "Robledo"),
+    ("Las Lomitas", "Las Lomitas"),
+    ("Las Palmas", "Las Palmas"),
+    ("Zuñiga", "Zuñiga"),
+    ("Loma del Indio", "Loma del Indio"),
+    ("Loma de las brujas", "Loma de las brujas"),
+    ("La candelaria", "La candelaria"),
+    ("Pan de azucar", "Pan de azucar"),
+    ("Suramerica", "Suramerica"),
+    ("Buenos Aires", "Buenos Aires"),
+    ("Boston", "Boston"),
+    ("Escobero", "Escobero"),
     ]
+
 
     TIPO_CHOICES = [
         ("apartamento", "Apartamento"),

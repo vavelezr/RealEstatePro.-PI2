@@ -127,7 +127,9 @@
             <div class="row w-100">
                 <div class="col-md-6 text-center">
                     <h5>Valor estimado:</h5>
-                    <h2>{{ results.price_estimated }}</h2>
+                    {% for year, prediction in results.price_estimated.items %}
+                    <h2>{{ year }}: {{ prediction }}</h2>
+                    {% endfor %}
                 </div>
                 <div class="col-md-6 text-center">
                     <h5>Valor por noche:</h5>
