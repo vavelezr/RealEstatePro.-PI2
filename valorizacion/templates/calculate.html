@@ -3,19 +3,18 @@
 
 {% block content %}
 {% block extra_css %}
-<link rel="stylesheet" href="{% static 'styles/calculo.css' %}">
+<link rel="stylesheet" href="{% static 'styles/calculate.css' %}">
 {% endblock extra_css %}
 <div class="container-fluid">
     <div class="row">
         <h2 class="mb-4 text-center">Formulario de Proyección de Valor</h2>
-        <!-- Formulario -->
         <div class="col-md-6 d-flex flex-column align-items-start justify-content-center">
             <form method="post">
                 {% csrf_token %}
                 <div class="row mb-3">
-                    <label for="id_barrio" class="col-sm-4 col-form-label">Barrio:</label>
+                    <label for="id_neighbourhood" class="col-sm-4 col-form-label">Barrio:</label>
                     <div class="col-sm-8">
-                        {{ form.barrio }}
+                        {{ form.neighbourhood }}
                     </div>
                 </div>
                 <div class="row mb-3">
@@ -27,31 +26,31 @@
                 <div class="row mb-3">
                     <label for="id_tipo" class="col-sm-4 col-form-label">Tipo:</label>
                     <div class="col-sm-8">
-                        {{ form.tipo }}
+                        {{ form.type }}
                     </div>
                 </div>
                 <div class="row mb-3">
-                    <label for="id_latitud" class="col-sm-4 col-form-label">Latitud:</label>
+                    <label for="id_latitude" class="col-sm-4 col-form-label">Latitud:</label>
                     <div class="col-sm-8">
-                        {{ form.latitud }}
+                        {{ form.latitude }}
                     </div>
                 </div>
                 <div class="row mb-3">
-                    <label for="id_longitud" class="col-sm-4 col-form-label">Longitud:</label>
+                    <label for="id_longitude" class="col-sm-4 col-form-label">Longitud:</label>
                     <div class="col-sm-8">
-                        {{ form.longitud }}
+                        {{ form.longitude }}
                     </div>
                 </div>
                 <div class="row mb-3">
-                    <label for="id_precio" class="col-sm-4 col-form-label">Precio:</label>
+                    <label for="id_price" class="col-sm-4 col-form-label">Precio:</label>
                     <div class="col-sm-8">
-                        {{ form.precio }}
+                        {{ form.price }}
                     </div>
                 </div>
                 <div class="row mb-3">
-                    <label for="id_num_habitaciones" class="col-sm-4 col-form-label">Habitaciones:</label>
+                    <label for="id_num_rooms" class="col-sm-4 col-form-label">Habitaciones:</label>
                     <div class="col-sm-8">
-                        {{ form.num_habitaciones }}
+                        {{ form.num_rooms }}
                     </div>
                 </div>
                 <div class="row mb-3">
@@ -61,21 +60,21 @@
                     </div>
                 </div>
                 <div class="row mb-3">
-                    <label for="id_tamano" class="col-sm-4 col-form-label">Tamaño (m²):</label>
+                    <label for="id_size" class="col-sm-4 col-form-label">Tamaño (m²):</label>
                     <div class="col-sm-8">
-                        {{ form.tamano }}
+                        {{ form.size }}
                     </div>
                 </div>
                 <div class="row mb-3">
-                    <label for="id_precio_administracion" class="col-sm-4 col-form-label">Administración:</label>
+                    <label for="id_price_administration" class="col-sm-4 col-form-label">Administración:</label>
                     <div class="col-sm-8">
-                        {{ form.precio_administracion }}
+                        {{ form.price_administration }}
                     </div>
                 </div>
                 <div class="row mb-3">
-                    <label for="id_antiguedad" class="col-sm-4 col-form-label">Antigüedad:</label>
+                    <label for="id_age" class="col-sm-4 col-form-label">Antigüedad:</label>
                     <div class="col-sm-8">
-                        {{ form.antiguedad }}
+                        {{ form.age }}
                     </div>
                 </div>
                 <div class="row mb-3">
@@ -85,9 +84,9 @@
                     </div>
                 </div>
                 <div class="row mb-3">
-                    <label for="id_estrato" class="col-sm-4 col-form-label">Estrato:</label>
+                    <label for="id_stratum" class="col-sm-4 col-form-label">Estrato:</label>
                     <div class="col-sm-8">
-                        {{ form.estrato }}
+                        {{ form.stratum }}
                     </div>
                 </div>
                 <div class="row mb-3">
@@ -107,16 +106,8 @@
             </form>
         </div>
 
-        <!-- Sección de Botones, Gráficos y Resultados a la derecha -->
+        <!-- Sección de Botones, Gráficos y resultss a la derecha -->
         <div class="col-md-6 d-flex flex-column align-items-center justify-content-start">
-            {% comment %} <div class="row w-100 mb-4">
-                <div class="col-md-6 text-center">
-                    <button type="submit" class="enviar w-100">Calcular valorización futura</button>
-                </div>
-                <div class="col-md-6 text-center">
-                    <button type="button" class="enviar w-100">Calculo precio por noche</button>
-                </div>
-            </div> {% endcomment %}
 
             <div class="row w-100 mb-4">
                 <div class="col-md-6 text-center">
@@ -136,11 +127,13 @@
             <div class="row w-100">
                 <div class="col-md-6 text-center">
                     <h5>Valor estimado:</h5>
-                    <h2>{{ resultado.valor_estimado }}</h2>
+                    {% for year, prediction in results.price_estimated.items %}
+                    <h2>{{ year }}: {{ prediction }}</h2>
+                    {% endfor %}
                 </div>
                 <div class="col-md-6 text-center">
                     <h5>Valor por noche:</h5>
-                    <h2>{{ resultado.valor_noche }}</h2>
+                    <h2></h2>
                 </div>
             </div>
         </div>

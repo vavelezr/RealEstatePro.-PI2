@@ -3,55 +3,56 @@ from .forms import PropertyForm
 from .arima_test import *
 
 
-def calculo(request):
+def calculate(request):
     if request.method == "POST":
         form = PropertyForm(request.POST)
         print(form.errors)
         if form.is_valid():
-            barrio = form.cleaned_data["barrio"]
-            latitud = form.cleaned_data["latitud"]
-            longitud = form.cleaned_data["longitud"]
-            tipo = form.cleaned_data["tipo"]
-            precio = form.cleaned_data["precio"]
-            num_habitaciones = form.cleaned_data["num_habitaciones"]
+            neighbourhood = form.cleaned_data["neighbourhood"]
+            latitude = form.cleaned_data["latitude"]
+            longitude = form.cleaned_data["longitude"]
+            type = form.cleaned_data["type"]
+            price = form.cleaned_data["price"]
+            num_rooms = form.cleaned_data["num_rooms"]
             num_banos = form.cleaned_data["num_banos"]
-            tamano = form.cleaned_data["tamano"]
-            precio_administracion = form.cleaned_data["precio_administracion"]
-            antiguedad = form.cleaned_data["antiguedad"]
+            size = form.cleaned_data["size"]
+            price_administration = form.cleaned_data["price_administration"]
+            age = form.cleaned_data["age"]
             garajes = form.cleaned_data["garajes"]
-            estrato = form.cleaned_data["estrato"]
+            stratum = form.cleaned_data["stratum"]
             propiedad_id = form.cleaned_data["id"]
 
-            datos_propiedad = {
-                "neighbourhood": barrio,
-                "latitude": latitud,
-                "longitude": longitud,
-                "property_type": tipo,
-                "price": precio,
-                "rooms": num_habitaciones,
+            data_property = {
+                "neighbourhood": neighbourhood,
+                "latitude": latitude,
+                "longitude": longitude,
+                "property_type": type,
+                "price": price,
+                "rooms": num_rooms,
                 "baths": num_banos,
-                "area": tamano,
-                "administration_price": precio_administracion,
-                "age": antiguedad,
+                "area": size,
+                "administration_price": price_administration,
+                "age": age,
                 "garages": garajes,
-                "stratum": estrato,
+                "stratum": stratum,
                 "id": propiedad_id,
-                "valor_estimado": precio,
+                "price_estimated": price,
             }
 
-            data = GetCsvData()
-            predictions = ArimaxPrediction(datos_propiedad, data)
+            data = get_csv_data()
+            predictions = arimax_prediction(data_property, data)
 
-            datos_propiedad["valor_estimado"] = predictions  # f'{predictions[0]:.5f}'
+            formatted_predictions = {f"{6 - i} año": f'{prediction:,.2f}' for i, prediction in enumerate(reversed(predictions))}
+            data_property["price_estimated"] = formatted_predictions
+
 
             print("Forms validado")
-            print(datos_propiedad)
-            # Retornar los datos procesados al template
+            print(data_property)
             return render(
-                request, "calculo.html", {"form": form, "resultado": datos_propiedad}
+                request, "calculate.html", {"form": form, "results": data_property}
             )
 
     else:
         form = PropertyForm()
 
-    return render(request, "calculo.html", {"form": form})
+    return render(request, "calculate.html", {"form": form})
