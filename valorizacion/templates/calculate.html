@@ -14,92 +14,137 @@
             <form method="post">
                 {% csrf_token %}
                 <div class="row mb-3">
-                    <label for="id_neighbourhood" class="col-sm-4 col-form-label">Barrio:</label>
+                    <label for="id_neighbourhood" class="col-sm-4 col-form-label">
+                        Barrio:
+                        <span class="tooltip-icon">
+                            ℹ
+                            <span class="tooltip-text">Seleccione el barrio de la propiedad</span>
+                        </span>
+                    </label>
                     <div class="col-sm-8">
                         {{ form.neighbourhood }}
                     </div>
                 </div>
+                
                 <div class="row mb-3">
-                    <label for="id_direccion" class="col-sm-4 col-form-label">Dirección:</label>
+                    <label for="id_direccion" class="col-sm-4 col-form-label">
+                        Dirección:
+                        <span class="tooltip-icon">
+                            ℹ
+                            <span class="tooltip-text">Ingrese la dirección completa de la propiedad</span>
+                        </span>
+                    </label>
                     <div class="col-sm-8">
                         {{ form.direccion }}
                     </div>
                 </div>
+                
                 <div class="row mb-3">
-                    <label for="id_tipo" class="col-sm-4 col-form-label">Tipo:</label>
+                    <label for="id_tipo" class="col-sm-4 col-form-label">
+                        Tipo:
+                        <span class="tooltip-icon">
+                            ℹ
+                            <span class="tooltip-text">Tipo de propiedad (apartamento o casa)</span>
+                        </span>
+                    </label>
                     <div class="col-sm-8">
                         {{ form.type }}
                     </div>
                 </div>
-                <!--
-                <div class="row mb-3">
-                    <label for="id_latitude" class="col-sm-4 col-form-label">Latitud:</label>
-                    <div class="col-sm-8">
-                        {{ form.latitude }}
-                    </div>
-                </div>
-                <div class="row mb-3">
-                    <label for="id_longitude" class="col-sm-4 col-form-label">Longitud:</label>
-                    <div class="col-sm-8">
-                        {{ form.longitude }}
-                    </div>
-                </div>
                 
                 <div class="row mb-3">
-                    <label for="id_price" class="col-sm-4 col-form-label">Precio:</label>
-                    <div class="col-sm-8">
-                        {{ form.price }}
-                    </div>
-                </div>
-                <div class="row mb-3">
-                    <label for="id_id" class="col-sm-4 col-form-label">ID:</label>
-                    <div class="col-sm-8">
-                        {{ form.id }}
-                    </div>
-                </div>
-                -->
-                <div class="row mb-3">
-                    <label for="id_num_rooms" class="col-sm-4 col-form-label">Habitaciones:</label>
+                    <label for="id_num_rooms" class="col-sm-4 col-form-label">
+                        Habitaciones:
+                        <span class="tooltip-icon">
+                            ℹ
+                            <span class="tooltip-text">Número de habitaciones en la propiedad</span>
+                        </span>
+                    </label>
                     <div class="col-sm-8">
                         {{ form.num_rooms }}
                     </div>
                 </div>
+                
                 <div class="row mb-3">
-                    <label for="id_num_banos" class="col-sm-4 col-form-label">Baños:</label>
+                    <label for="id_num_banos" class="col-sm-4 col-form-label">
+                        Baños:
+                        <span class="tooltip-icon">
+                            ℹ
+                            <span class="tooltip-text">Número de baños en la propiedad</span>
+                        </span>
+                    </label>
                     <div class="col-sm-8">
                         {{ form.num_banos }}
                     </div>
                 </div>
+                
                 <div class="row mb-3">
-                    <label for="id_size" class="col-sm-4 col-form-label">Tamaño (m²):</label>
+                    <label for="id_size" class="col-sm-4 col-form-label">
+                        Tamaño (m²):
+                        <span class="tooltip-icon">
+                            ℹ
+                            <span class="tooltip-text">Tamaño total en metros cuadrados de la propiedad</span>
+                        </span>
+                    </label>
                     <div class="col-sm-8">
                         {{ form.size }}
                     </div>
                 </div>
+                
                 <div class="row mb-3">
-                    <label for="id_price_administration" class="col-sm-4 col-form-label">Administración:</label>
+                    <label for="id_price_administration" class="col-sm-4 col-form-label">
+                        Administración:
+                        <span class="tooltip-icon">
+                            ℹ
+                            <span class="tooltip-text">- Precio mensual de administración (si aplica)
+                                -Pon 0 si no hay administración
+                            </span>
+                        </span>
+                    </label>
                     <div class="col-sm-8">
                         {{ form.price_administration }}
                     </div>
                 </div>
+                
                 <div class="row mb-3">
-                    <label for="id_age" class="col-sm-4 col-form-label">Antigüedad:</label>
+                    <label for="id_age" class="col-sm-4 col-form-label">
+                        Antigüedad:
+                        <span class="tooltip-icon">
+                            ℹ
+                            <span class="tooltip-text">Edad de la propiedad en años</span>
+                        </span>
+                    </label>
                     <div class="col-sm-8">
                         {{ form.age }}
                     </div>
                 </div>
+                
                 <div class="row mb-3">
-                    <label for="id_garajes" class="col-sm-4 col-form-label">Garajes:</label>
+                    <label for="id_garajes" class="col-sm-4 col-form-label">
+                        Garajes:
+                        <span class="tooltip-icon">
+                            ℹ
+                            <span class="tooltip-text">Número de garajes en el inmueble</span>
+                        </span>
+                    </label>
                     <div class="col-sm-8">
                         {{ form.garajes }}
                     </div>
                 </div>
+                
                 <div class="row mb-3">
-                    <label for="id_stratum" class="col-sm-4 col-form-label">Estrato:</label>
+                    <label for="id_stratum" class="col-sm-4 col-form-label">
+                        Estrato:
+                        <span class="tooltip-icon">
+                            ℹ
+                            <span class="tooltip-text">Estrato socioeconómico de la propiedad (1-6)</span>
+                        </span>
+                    </label>
                     <div class="col-sm-8">
                         {{ form.stratum }}
                     </div>
                 </div>
+                
 
                 <div class="row w-100 mb-4">
                     <div class="col-md-6 text-center">
@@ -140,7 +185,7 @@
                     <br>
                     {% if results.price_estimated %}
                     {% for year, prediction in results.price_estimated.items %}
-                        <h4>{{ year }}: {{ prediction }}</h4>
+                        <h4>{{ year }} año: {{ prediction }}</h4>
                     {% endfor %}
                 {% else %}
                     <h4>Oprime el botón 'Calcular valorización futura' para mostrar resultado</h4>
