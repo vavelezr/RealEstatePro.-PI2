@@ -5,7 +5,9 @@
 {% block extra_css %}
 <link rel="stylesheet" href="{% static 'styles/register.css' %}">
 {% endblock extra_css %}
+
 <div class="content">
+    <h3 class="signup_message">Registrese</h3>
     <div class="mb-3 card">
         <div class="card-body">
             <form class="form_register__form" method="post">
@@ -17,5 +19,7 @@
         </div>
     </div>  
 </div>
+<h6 class="register_message">El registro en nuestra plataforma será usado para que podamos guardar y <br>
+    gestionar de manera segura la información de sus actividades y preferencias. </h6>
 
 {% endblock %}

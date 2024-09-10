@@ -17,14 +17,14 @@ def get_csv_data():
     df_price_history = df_price_history.sort_index()
 
     df_price_history = df_price_history[df_price_history["price"] < 1100000000]
-    
+
     df_properties["latitude"] = pd.to_numeric(
         df_properties["latitude"], errors="coerce"
     )
     df_properties["longitude"] = pd.to_numeric(
         df_properties["longitude"], errors="coerce"
     )
-    
+
     df_properties["garages"] = pd.to_numeric(df_properties["garages"], errors="coerce")
     df_properties["neighbourhood"] = df_properties["neighbourhood"].astype("string")
     merged_data = pd.merge(df_price_history.reset_index(), df_properties, on="id")
@@ -97,7 +97,8 @@ def ArimaxPrediction(user_data_dict, merged_data):
     print(neighbuorhood_data.index)"""
     return predictions
 
-'''
+
+"""
 import os
 import pandas as pd
 import numpy as np
@@ -198,4 +199,4 @@ def arimax_prediction(user_data_dict, merged_data):
     print(f"Predictios for the user's property in neighbourhood {user_neighbourhood}")
     print(predictions)
 
-    return predictions'''
+    return predictions"""

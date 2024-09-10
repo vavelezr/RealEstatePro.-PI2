@@ -3,17 +3,22 @@
     justify-content: space-evenly;
     margin-top: 5vh;
     flex: 1;
-    margin-top: 20vh;
+    margin-top: 10vh;
     place-items: center;
 }
 
 .welcome_message{
     text-align: center;
-    font-style: oblique;
 }
 
 .welcome_description_message{
     font-family: ui-rounded;
+}
+
+.about_us_message{
+    font-family: auto;
+    text-align: center;
+    font-weight: lighter;
 }
 
 .btn-custom{
@@ -22,6 +27,7 @@
     width: 20vw;
     margin-bottom: 3%;
     margin-top: 5%;
+    
 }
 
 .home_button{

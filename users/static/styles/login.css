@@ -1,7 +1,7 @@
 .content{
     display: grid;
     justify-content: space-evenly;
-    margin-top: 5vh;
+    margin-top: 4vh;
     flex: 1;
 }
 .mb-3{
@@ -13,4 +13,9 @@
     width: 100%;
     margin-bottom: 3%;
     margin-top: 5%;
+}
+
+.login_message{
+    font-family: auto;
+    margin-bottom: 2vh;
 }

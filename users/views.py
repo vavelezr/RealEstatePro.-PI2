@@ -1,4 +1,3 @@
-from functools import reduce
 
 from django.contrib.auth import logout
 from django.shortcuts import render, redirect
@@ -12,9 +11,8 @@ def register(request):
         form = UserRegisterForm(request.POST)
         if form.is_valid():
             form.save()
-            username = form.cleaned_data["username"]
-            # messages.success(request, f"Usuario {username} creado")
-            return redirect('login')
+            messages.add_message(request, messages.SUCCESS, 'Registro exitoso')
+            return redirect("login")
     else:
         form = UserRegisterForm()
     context = {"form": form}
@@ -24,6 +22,7 @@ def register(request):
 class CustomLoginView(LoginView):
     form_class = CustomLoginForm
 
+
 def custom_logout(request):
     logout(request)
-    return redirect('/')
+    return redirect("/")

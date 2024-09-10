@@ -4,7 +4,16 @@
 {% block extra_css %}
 <link rel="stylesheet" href="{% static 'styles/login.css' %}">
 {% endblock extra_css %}
+
+{% if messages %}
+    <ul class="messages">
+        {% for message in messages %}
+            <li class="alert alert-{{ message.tags }}">{{ message }}</li>
+        {% endfor %}
+    </ul>
+{% endif %} 
 <div class="content">
+    <h3 class="login_message">Inicie sesión</h3>
     <div class="mb-3 card">
         <div class="card-body">
             <form class="form" method="post">

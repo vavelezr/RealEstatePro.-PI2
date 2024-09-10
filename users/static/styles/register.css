@@ -14,3 +14,12 @@
     margin-bottom: 3%;
     margin-top: 5%;
 }
+
+.signup_message{
+    font-family: auto;
+    margin-bottom: 2vh;
+}
+
+.register_message{
+    font-weight: lighter;
+}
