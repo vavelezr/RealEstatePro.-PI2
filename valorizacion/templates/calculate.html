@@ -4,6 +4,8 @@
 {% block content %}
 {% block extra_css %}
 <link rel="stylesheet" href="{% static 'styles/calculate.css' %}">
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
 {% endblock extra_css %}
 <div class="container-fluid">
     <div class="row">
@@ -12,92 +14,137 @@
             <form method="post">
                 {% csrf_token %}
                 <div class="row mb-3">
-                    <label for="id_neighbourhood" class="col-sm-4 col-form-label">Barrio:</label>
+                    <label for="id_neighbourhood" class="col-sm-4 col-form-label">
+                        Barrio:
+                        <span class="tooltip-icon">
+                            ℹ
+                            <span class="tooltip-text">Seleccione el barrio de la propiedad</span>
+                        </span>
+                    </label>
                     <div class="col-sm-8">
                         {{ form.neighbourhood }}
                     </div>
                 </div>
+                
                 <div class="row mb-3">
-                    <label for="id_direccion" class="col-sm-4 col-form-label">Dirección:</label>
+                    <label for="id_direccion" class="col-sm-4 col-form-label">
+                        Dirección:
+                        <span class="tooltip-icon">
+                            ℹ
+                            <span class="tooltip-text">Ingrese la dirección completa de la propiedad</span>
+                        </span>
+                    </label>
                     <div class="col-sm-8">
                         {{ form.direccion }}
                     </div>
                 </div>
+                
                 <div class="row mb-3">
-                    <label for="id_tipo" class="col-sm-4 col-form-label">Tipo:</label>
+                    <label for="id_tipo" class="col-sm-4 col-form-label">
+                        Tipo:
+                        <span class="tooltip-icon">
+                            ℹ
+                            <span class="tooltip-text">Tipo de propiedad (apartamento o casa)</span>
+                        </span>
+                    </label>
                     <div class="col-sm-8">
                         {{ form.type }}
                     </div>
                 </div>
-                <!--
-                <div class="row mb-3">
-                    <label for="id_latitude" class="col-sm-4 col-form-label">Latitud:</label>
-                    <div class="col-sm-8">
-                        {{ form.latitude }}
-                    </div>
-                </div>
-                <div class="row mb-3">
-                    <label for="id_longitude" class="col-sm-4 col-form-label">Longitud:</label>
-                    <div class="col-sm-8">
-                        {{ form.longitude }}
-                    </div>
-                </div>
                 
                 <div class="row mb-3">
-                    <label for="id_price" class="col-sm-4 col-form-label">Precio:</label>
-                    <div class="col-sm-8">
-                        {{ form.price }}
-                    </div>
-                </div>
-                <div class="row mb-3">
-                    <label for="id_id" class="col-sm-4 col-form-label">ID:</label>
-                    <div class="col-sm-8">
-                        {{ form.id }}
-                    </div>
-                </div>
-                -->
-                <div class="row mb-3">
-                    <label for="id_num_rooms" class="col-sm-4 col-form-label">Habitaciones:</label>
+                    <label for="id_num_rooms" class="col-sm-4 col-form-label">
+                        Habitaciones:
+                        <span class="tooltip-icon">
+                            ℹ
+                            <span class="tooltip-text">Número de habitaciones en la propiedad</span>
+                        </span>
+                    </label>
                     <div class="col-sm-8">
                         {{ form.num_rooms }}
                     </div>
                 </div>
+                
                 <div class="row mb-3">
-                    <label for="id_num_banos" class="col-sm-4 col-form-label">Baños:</label>
+                    <label for="id_num_banos" class="col-sm-4 col-form-label">
+                        Baños:
+                        <span class="tooltip-icon">
+                            ℹ
+                            <span class="tooltip-text">Número de baños en la propiedad</span>
+                        </span>
+                    </label>
                     <div class="col-sm-8">
                         {{ form.num_banos }}
                     </div>
                 </div>
+                
                 <div class="row mb-3">
-                    <label for="id_size" class="col-sm-4 col-form-label">Tamaño (m²):</label>
+                    <label for="id_size" class="col-sm-4 col-form-label">
+                        Tamaño (m²):
+                        <span class="tooltip-icon">
+                            ℹ
+                            <span class="tooltip-text">Tamaño total en metros cuadrados de la propiedad</span>
+                        </span>
+                    </label>
                     <div class="col-sm-8">
                         {{ form.size }}
                     </div>
                 </div>
+                
                 <div class="row mb-3">
-                    <label for="id_price_administration" class="col-sm-4 col-form-label">Administración:</label>
+                    <label for="id_price_administration" class="col-sm-4 col-form-label">
+                        Administración:
+                        <span class="tooltip-icon">
+                            ℹ
+                            <span class="tooltip-text">- Precio mensual de administración (si aplica)
+                                -Pon 0 si no hay administración
+                            </span>
+                        </span>
+                    </label>
                     <div class="col-sm-8">
                         {{ form.price_administration }}
                     </div>
                 </div>
+                
                 <div class="row mb-3">
-                    <label for="id_age" class="col-sm-4 col-form-label">Antigüedad:</label>
+                    <label for="id_age" class="col-sm-4 col-form-label">
+                        Antigüedad:
+                        <span class="tooltip-icon">
+                            ℹ
+                            <span class="tooltip-text">Edad de la propiedad en años</span>
+                        </span>
+                    </label>
                     <div class="col-sm-8">
                         {{ form.age }}
                     </div>
                 </div>
+                
                 <div class="row mb-3">
-                    <label for="id_garajes" class="col-sm-4 col-form-label">Garajes:</label>
+                    <label for="id_garajes" class="col-sm-4 col-form-label">
+                        Garajes:
+                        <span class="tooltip-icon">
+                            ℹ
+                            <span class="tooltip-text">Número de garajes en el inmueble</span>
+                        </span>
+                    </label>
                     <div class="col-sm-8">
                         {{ form.garajes }}
                     </div>
                 </div>
+                
                 <div class="row mb-3">
-                    <label for="id_stratum" class="col-sm-4 col-form-label">Estrato:</label>
+                    <label for="id_stratum" class="col-sm-4 col-form-label">
+                        Estrato:
+                        <span class="tooltip-icon">
+                            ℹ
+                            <span class="tooltip-text">Estrato socioeconómico de la propiedad (1-6)</span>
+                        </span>
+                    </label>
                     <div class="col-sm-8">
                         {{ form.stratum }}
                     </div>
                 </div>
+                
 
                 <div class="row w-100 mb-4">
                     <div class="col-md-6 text-center">
@@ -115,32 +162,89 @@
 
             <div class="row w-100 mb-4">
                 <div class="col-md-6 text-center">
-                    <div id="grafico1" class="result-box">
-                        <!-- Placeholder para gráfico 1 -->
-                        <img src="{% static 'images/grafico1_placeholder.png' %}" alt="Gráfico 1" class="img-fluid">
+                    <div id="grafico2" class="result-box">
+                        {% if results.price_estimated %}
+                            <canvas id="propertyValueChart"></canvas>
+                        {% else %}
+                            <h5>Oprime el botón 'Calcular valorización futura' para mostrar grafico</h5>
+                        {% endif %}
                     </div>
                 </div>
+                
                 <div class="col-md-6 text-center">
                     <div id="grafico2" class="result-box">
                         <!-- Placeholder para gráfico 2 -->
-                        <img src="{% static 'images/grafico2_placeholder.png' %}" alt="Gráfico 2" class="img-fluid">
+                        <h5>Proximamente está funcionalidad estará en Realstatepro</h5>
                     </div>
                 </div>
             </div>
 
             <div class="row w-100">
                 <div class="col-md-6 text-center">
-                    <h5>Valor estimado:</h5>
+                    <h3>Valor estimado:</h3>
+                    <br>
+                    {% if results.price_estimated %}
                     {% for year, prediction in results.price_estimated.items %}
-                    <h2>{{ year }}: {{ prediction }}</h2>
+                        <h4>{{ year }} año: {{ prediction }}</h4>
                     {% endfor %}
+                {% else %}
+                    <h4>Oprime el botón 'Calcular valorización futura' para mostrar resultado</h4>
+                {% endif %}
+                
                 </div>
                 <div class="col-md-6 text-center">
-                    <h5>Valor por noche:</h5>
-                    <h2></h2>
+                    <h3>Valor por noche:</h3>
+                    <br>
+                    <br>    
+                    <h4>Proximamente</h4>
                 </div>
             </div>
         </div>
     </div>
 </div>
+
+
+
+<script>
+    // Datos de valorización enviados desde el backend
+    var priceEstimated = {{ results.price_estimated|safe }};
+
+    // Extraer los datos para el gráfico
+    var years = Object.keys(priceEstimated);  // Años como clave
+    var prices = Object.values(priceEstimated).map(value => parseFloat(value.replace(/,/g, '')));  // Valores de la valorización
+
+    var ctx = document.getElementById('propertyValueChart').getContext('2d');
+    var myChart = new Chart(ctx, {
+        type: 'line', // Puedes cambiarlo a 'bar' si prefieres un gráfico de barras
+        data: {
+            labels: years, // Eje X: Años
+            datasets: [{
+                label: 'Valorización de la Propiedad',
+                data: prices, // Eje Y: Valorización
+                borderColor: 'rgba(75, 192, 192, 1)',
+                borderWidth: 2,
+                fill: false,
+                tension: 0.1 // Esto hace que la línea sea suave
+            }]
+        },
+        options: {
+            scales: {
+                x: {
+                    title: {
+                        display: true,
+                        text: 'Años'
+                    }
+                },
+                y: {
+                    title: {
+                        display: true,
+                        text: 'Valorización'
+                    },
+                    beginAtZero: false // Los valores de Y empiezan desde el valor mínimo
+                }
+            }
+        }
+    });
+</script>
+
 {% endblock %}

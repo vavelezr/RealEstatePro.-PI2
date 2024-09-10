@@ -57,3 +57,45 @@ footer {
     max-width: 100%;
     height: auto;
 }
+
+/* Ayuda para forms */
+
+.tooltip-icon {
+    position: relative;
+    display: inline-block;
+    cursor: pointer;
+    color: #007bff; /* Color del icono de información */
+    font-weight: bold;
+}
+.tooltip-icon:hover .tooltip-text {
+    visibility: visible;
+    opacity: 1;
+}
+.tooltip-text {
+    visibility: hidden;
+    width: 200px;
+    background-color: #333;
+    color: #fff;
+    text-align: center;
+    border-radius: 5px;
+    padding: 5px;
+    position: absolute;
+    z-index: 1;
+    bottom: 125%; /* Posiciona el tooltip sobre el icono */
+    left: 50%;
+    margin-left: -100px;
+    opacity: 0;
+    transition: opacity 0.3s;
+}
+/* Flecha del tooltip */
+.tooltip-text::after {
+    content: "";
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    margin-left: -5px;
+    border-width: 5px;
+    border-style: solid;
+    border-color: #333 transparent transparent transparent;
+}
+
