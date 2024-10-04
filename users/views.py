@@ -4,6 +4,12 @@ from django.shortcuts import render, redirect
 from django.contrib.auth.views import LoginView
 from django.contrib import messages
 from .forms import CustomLoginForm, UserRegisterForm
+from django.shortcuts import render
+from valorizacion.models import Property
+
+def profile_view(request):
+    properties = Property.objects.filter(user=request.user)
+    return render(request, "profile.html", {"properties": properties})
 
 
 def register(request):

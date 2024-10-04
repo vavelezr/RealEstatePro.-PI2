@@ -13,6 +13,15 @@ h2 {
     border:0px;
 }
 
+.save-btn {
+    background-color: rgb(255, 145, 149);
+    color: white;
+    border-radius: 50px;
+    border: 0px;
+    margin-bottom: 3%;
+    margin-top: 20%;
+    width: auto;
+}
 
 .col-md-6.d-flex.flex-column.align-items-center.justify-content-start {
     align-items: center;  

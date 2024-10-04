@@ -1,0 +1,53 @@
+{% extends 'layout.html' %}
+{% load static %}
+
+{% block content %}
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'styles/profile.css' %}">  
+{% endblock extra_css %}
+
+<div class="content">
+    <h3 class="profile_message">Mi Perfil</h3>
+    <div class="mb-3 card">
+        <div class="card-body">
+            <h5>Propiedades Guardadas</h5>
+
+            {% if properties %}
+                <table class="table table-striped">
+                    <thead>
+                        <tr>
+                            <th>Barrio</th>
+                            <th>Tipo de Propiedad</th>
+                            <th>Habitaciones</th>
+                            <th>Baños</th>
+                            <th>Tamaño (m²)</th>
+                            <th>Precio Estimado</th>
+                            <th>Modificar </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for property in properties %}
+                        <tr>
+                            <td>{{ property.neighbourhood }}</td>
+                            <td>{{ property.type }}</td>
+                            <td>{{ property.num_rooms }}</td>
+                            <td>{{ property.num_banos }}</td>
+                            <td>{{ property.size }} m²</td>
+                            <td>${{ property.estimated_price }}</td>
+                            <td>
+                                <a href="{% url 'edit_property' property.id %}" class="btn btn-primary">Modificar</a>
+                            </td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            {% else %}
+                <p>No tienes propiedades guardadas todavía.</p>
+            {% endif %}
+        </div>
+    </div>  
+</div>
+
+<h6 class="profile_message">En esta sección puedes revisar las propiedades que has guardado y gestionarlas de manera segura.</h6>
+
+{% endblock %}

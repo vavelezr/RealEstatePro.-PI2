@@ -1,6 +1,8 @@
-from django.shortcuts import render
-from .forms import PropertyForm
+from django.shortcuts import render, get_object_or_404, redirect
 from .arima_test import *
+from .forms import PropertyForm
+from .models import Property
+
 
 
 def calculate(request):
@@ -9,6 +11,7 @@ def calculate(request):
         print(form.errors)
         if form.is_valid():
             neighbourhood = form.cleaned_data["neighbourhood"]
+            direccion = form.cleaned_data["direccion"]
             # latitude = form.cleaned_data["latitude"]
             # longitude = form.cleaned_data["longitude"]
             type = form.cleaned_data["type"]
@@ -24,6 +27,8 @@ def calculate(request):
 
             data_property = {
                 "neighbourhood": neighbourhood,
+                "direccion": direccion,
+                
                 # "latitude": latitude,
                 # "longitude": longitude,
                 "property_type": type,
@@ -45,6 +50,24 @@ def calculate(request):
             formatted_predictions = {6 - i: f'{prediction:,.2f}' for i, prediction in enumerate(reversed(predictions))}
             data_property["price_estimated"] = formatted_predictions
 
+
+            if 'save_property' in request.POST:
+                Property.objects.create(
+                    user=request.user,
+                    neighbourhood=neighbourhood,
+                    direccion=direccion,
+                    type=type,
+                    num_rooms=num_rooms,
+                    num_banos=num_banos,
+                    size=size,
+                    price_administration=price_administration,
+                    age=age,
+                    garages=garajes,
+                    stratum=stratum,
+                    estimated_price=predictions[-1]
+                )
+                return redirect('profile')
+
             print("Forms validado")
             print(data_property)
             return render(
@@ -55,3 +78,19 @@ def calculate(request):
         form = PropertyForm()
 
     return render(request, "calculate.html", {"form": form})
+
+
+
+def edit_property(request, property_id):
+
+    property_instance = get_object_or_404(Property, id=property_id, user=request.user)
+    
+    if request.method == "POST":
+        form = PropertyForm(request.POST, instance=property_instance)  
+        if form.is_valid():
+            form.save()
+            return redirect('profile')
+    else:
+        form = PropertyForm(instance=property_instance)
+    
+    return render(request, 'calculate.html', {'form': form, 'property': property_instance})

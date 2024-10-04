@@ -1,7 +1,15 @@
 from django import forms
+from .models import Property
 
+class PropertyForm(forms.ModelForm):
+    class Meta:
+        model = Property  # Replace with your actual model
+        fields = [
+            'neighbourhood', 'direccion', 'type', 'num_rooms',
+            'num_banos', 'size', 'price_administration', 'age',
+            'garajes', 'stratum'
+        ]  # Include the actual fields from your model here
 
-class PropertyForm(forms.Form):
     BARRIOS_CHOICES = [
         ("Calasanz", "Calasanz"),
         ("Laureles", "Laureles"),
