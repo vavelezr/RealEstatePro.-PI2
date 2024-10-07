@@ -42,6 +42,8 @@ INSTALLED_APPS = [
     "home.apps.HomeConfig",
     "django_sass",
     "valorizacion",
+    "arrendamiento",
+    
 ]
 
 MIDDLEWARE = [
