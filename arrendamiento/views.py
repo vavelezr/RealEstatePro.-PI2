@@ -14,6 +14,7 @@ def rent(request):
             num_rooms = form.cleaned_data["num_rooms"]
             num_banos = form.cleaned_data["num_banos"]
             size = form.cleaned_data["size"]
+            age = form.cleaned_data["age"]
             wifi = 1 if form.cleaned_data["wifi"] else 0
             air_conditioner = 1 if form.cleaned_data["air_conditioner"] else 0
             balcony = 1 if form.cleaned_data["balcony"] else 0
@@ -30,26 +31,27 @@ def rent(request):
             parking = 1 if form.cleaned_data["parking"] else 0
 
             data_property = {
-                "neighbourhood": neighbourhood,
-                "property_type": type,
-                "rooms": num_rooms,
-                "baths": num_banos,
-                "area": size,
+                "Ubicación": neighbourhood,
+                "tipo_propiedad": type,
+                "Habitaciones": num_rooms,
+                "Baños": num_banos,
+                "tamaño(m2)": size,
                 "id": 1,
-                "wifi": wifi,
-                "air_conditioner":air_conditioner,
-                "balcony": balcony,
-                "terrace": terrace,
-                "garden": garden,
-                "pool": pool,
-                "heater": heater,
-                "washing_machine": washing_machine,
-                "dryer": dryer,
-                "chimney":chimney,
-                "jacuzzi":jacuzzi,
-                "sauna":sauna,
-                "board_games": board_games,
-                "parking": parking,
+                "Wi-Fi": wifi,
+                "aire_acondicionado":air_conditioner,
+                "Balcón": balcony,
+                "Terraza": terrace,
+                "Jardín": garden,
+                "Piscina": pool,
+                "age": age,
+                "Calefacción": heater,
+                "Lavadora": washing_machine,
+                "Secadora": dryer,
+                "Chimenea":chimney,
+                "Jacuzzi":jacuzzi,
+                "Sauna":sauna,
+                "juegos_de_mesa": board_games,
+                "Parqueadero": parking,
             }
 
             data = get_csv_data()

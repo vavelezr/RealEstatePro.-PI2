@@ -3,7 +3,7 @@
 
 {% block content %}
 {% block extra_css %}
-<link rel="stylesheet" href="{% static 'styles/rent.css' %}">
+<link rel="stylesheet" href="{% static 'styles/calculate.css' %}">
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
 {% endblock extra_css %}
@@ -25,7 +25,7 @@
                         {{ form.neighbourhood }}
                     </div>
                 </div>
-                
+
                 <div class="row mb-3">
                     <label for="id_tipo" class="col-sm-4 col-form-label">
                         Tipo:
@@ -38,7 +38,20 @@
                         {{ form.type }}
                     </div>
                 </div>
-
+                
+                <div class="row mb-3">
+                    <label for="id_age" class="col-sm-4 col-form-label">
+                        Antigüedad:
+                        <span class="tooltip-icon">
+                            ℹ
+                            <span class="tooltip-text">Edad de la propiedad en años</span>
+                        </span>
+                    </label>
+                    <div class="col-sm-8">
+                        {{ form.age }}
+                    </div>
+                </div>
+                
                 <div class="row mb-3">
                     <label for="id_num_rooms" class="col-sm-4 col-form-label">
                         Habitaciones:
@@ -78,6 +91,7 @@
                     </div>
                 </div>
                 
+            
                 <div class="row mb-3">
                     <label for="id_wifi" class="col-sm-4 col-form-label">
                         WiFi:
@@ -116,7 +130,7 @@
                         {{ form.balcony }}
                     </div>
                 </div>
-
+            
                 <div class="row mb-3">
                     <label for="id_terrace" class="col-sm-4 col-form-label">
                         Terraza:
@@ -129,7 +143,7 @@
                         {{ form.terrace }}
                     </div>
                 </div>
-
+            
                 <div class="row mb-3"></div>
                     <label for="id_garden" class="col-sm-4 col-form-label">
                         Jardín:
@@ -142,7 +156,7 @@
                         {{ form.garden }}
                     </div>
                 </div>
-
+            
                 <div class="row mb-3"></div>
                     <label for="id_pool" class="col-sm-4 col-form-label">
                         Piscina:
@@ -155,7 +169,7 @@
                         {{ form.pool }}
                     </div>
                 </div>
-
+            
                 <div class="row mb-3"></div>
                     <label for="id_heater" class="col-sm-4 col-form-label">
                         Calefacción:
@@ -168,7 +182,7 @@
                         {{ form.heater }}
                     </div>
                 </div>
-
+            
                 <div class="row mb-3"></div>
                     <label for="id_washing_machine" class="col-sm-4 col-form-label">
                         Lavadora:
@@ -181,7 +195,7 @@
                         {{ form.washing_machine }}
                     </div>
                 </div>
-
+            
                 <div class="row mb-3"></div>
                     <label for="id_dryer" class="col-sm-4 col-form-label">
                         Secadora:
@@ -194,7 +208,7 @@
                         {{ form.dryer }}
                     </div>
                 </div>
-
+            
                 <div class="row mb-3"></div>
                     <label for="id_chimney" class="col-sm-4 col-form-label">
                         Chimenea:
@@ -207,7 +221,7 @@
                         {{ form.chimney }}
                     </div>
                 </div>
-
+            
                 <div class="row mb-3"></div>
                     <label for="id_jacuzzi" class="col-sm-4 col-form-label">
                         Jacuzzi:
@@ -220,7 +234,7 @@
                         {{ form.jacuzzi }}
                     </div>
                 </div>
-
+            
                 <div class="row mb-3"></div>
                     <label for="id_sauna" class="col-sm-4 col-form-label">
                         Sauna:
@@ -233,7 +247,7 @@
                         {{ form.sauna }}
                     </div>
                 </div>
-
+            
                 <div class="row mb-3"></div>
                     <label for="id_board_games" class="col-sm-4 col-form-label">
                         Juegos de mesa:
@@ -246,7 +260,7 @@
                         {{ form.board_games }}
                     </div>
                 </div>
-
+            
                 <div class="row mb-3">
                     <label for="id_parking" class="col-sm-4 col-form-label">
                         Parqueadero:
@@ -259,13 +273,13 @@
                         {{ form.parking }}
                     </div>
                 </div>
-
+                
                 <div class="row w-100 mb-4">
-                    <div class="col-md-6 text-center"></div>
+                    <div class="col-md-6 text-center">
                         <button type="submit" class="enviar w-100">Calcular valorización futura</button>
                     </div>
                     <div class="col-md-6 text-center">
-                        <button type="submit" class="enviar w-100">Calculo precio por noche</button>
+                        <button type="button" class="enviar w-100">Calculo precio por noche</button>
                     </div>
                 </div>
                 <button type="submit" name="save_property" class="btn save-btn w-100">Guardar información de propiedad</button>

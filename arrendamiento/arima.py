@@ -52,7 +52,7 @@ def arimax_prediction(user_data_dict, merged_data):
         return neighbourhood_data
     target_ts = neighbourhood_data["price_x"]
     exog_vars = neighbourhood_data[
-        ["Habitaciones", "Baños", "tamaño(m2)", "age", "Wi-Fi", "aire_acondicionado", "Balcón ","Terraza", "Jardín", "Piscina", "Calefacción", "Lavadora", "Secadora", "Chimenea", "Jacuzzi", "Sauna", "juegos_de_mesa", "Parqueadero"]
+        ["Habitaciones", "Baños", "tamaño(m2)", "age", "Wi-Fi", "aire_acondicionado", "Balcón","Terraza", "Jardín", "Piscina", "Calefacción", "Lavadora", "Secadora", "Chimenea", "Jacuzzi", "Sauna", "juegos_de_mesa", "Parqueadero"]
     ]
     scaler_price = StandardScaler()
     target_ts_scaled = scaler_price.fit_transform(
@@ -64,7 +64,7 @@ def arimax_prediction(user_data_dict, merged_data):
     model = SARIMAX(target_ts_diff, exog=exog_vars_scaled[:-1], order=(1, 1, 1))
     model_fit = model.fit(disp=False)
     user_exog_vars = user_data[
-        ["Habitaciones", "Baños", "tamaño(m2)", "age", "Wi-Fi", "aire_acondicionado", "Balcón ","Terraza", "Jardín", "Piscina", "Calefacción", "Lavadora", "Secadora", "Chimenea", "Jacuzzi", "Sauna", "juegos_de_mesa", "Parqueadero"]
+        ["Habitaciones", "Baños", "tamaño(m2)", "age", "Wi-Fi", "aire_acondicionado", "Balcón","Terraza", "Jardín", "Piscina", "Calefacción", "Lavadora", "Secadora", "Chimenea", "Jacuzzi", "Sauna", "juegos_de_mesa", "Parqueadero"]
     ]
     user_exog_vars_replicated = pd.concat([user_exog_vars] * 5, ignore_index=True)
     user_exog_vars_scaled = scaler_exog.transform(user_exog_vars_replicated)
