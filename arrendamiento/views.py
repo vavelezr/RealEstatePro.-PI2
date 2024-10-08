@@ -57,7 +57,8 @@ def rent(request):
             data = get_csv_data()
             predictions = arimax_prediction(data_property, data)
 
-            formatted_predictions = {6 - i: f'{prediction:,.2f}' for i, prediction in enumerate(reversed(predictions))}
+            formatted_predictions = f'{predictions:,.2f}'
+            #formatted_predictions = {6 - i: f'{prediction:,.2f}' for i, prediction in enumerate(reversed(predictions))}
             data_property["price_estimated"] = formatted_predictions
 
             print("Forms validado")

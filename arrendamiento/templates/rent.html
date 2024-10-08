@@ -38,7 +38,6 @@
                         {{ form.type }}
                     </div>
                 </div>
-                
                 <div class="row mb-3">
                     <label for="id_age" class="col-sm-4 col-form-label">
                         Antigüedad:
@@ -276,10 +275,10 @@
                 
                 <div class="row w-100 mb-4">
                     <div class="col-md-6 text-center">
-                        <button type="submit" class="enviar w-100">Calcular valorización futura</button>
+                        <a href="{% url 'calculate' %}" class="enviar w-200">Calcular valorización futura</a>
                     </div>
                     <div class="col-md-6 text-center">
-                        <button type="button" class="enviar w-100">Calculo precio por noche</button>
+                        <button type="submit" class="enviar w-100">Calculo precio por noche</button>
                     </div>
                 </div>
                 <button type="submit" name="save_property" class="btn save-btn w-100">Guardar información de propiedad</button>
@@ -313,13 +312,11 @@
                     <h3>Valor estimado:</h3>
                     <br>
                     {% if results.price_estimated %}
-                    {% for year, prediction in results.price_estimated.items %}
-                        <h4>{{ year }} año: {{ prediction }}</h4>
-                    {% endfor %}
+                        <h4>{{ results.price_estimated }}</h4>
                 {% else %}
                     <h4>Oprime el botón 'Calcular valorización futura' para mostrar resultado</h4>
                 {% endif %}
-                
+
                 </div>
                 <div class="col-md-6 text-center">
                     <h3>Valor por noche:</h3>
