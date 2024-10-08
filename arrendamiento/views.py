@@ -1,7 +1,6 @@
-from django.shortcuts import render
-# Create your views here.
 from django.shortcuts import render, get_object_or_404, redirect
 from .arima import *
+from .models import RentalProperty
 from .forms import PropertyForm
 
 def rent(request):
@@ -36,9 +35,8 @@ def rent(request):
                 "Habitaciones": num_rooms,
                 "Baños": num_banos,
                 "tamaño(m2)": size,
-                "id": 1,
                 "Wi-Fi": wifi,
-                "aire_acondicionado":air_conditioner,
+                "aire_acondicionado": air_conditioner,
                 "Balcón": balcony,
                 "Terraza": terrace,
                 "Jardín": garden,
@@ -47,21 +45,45 @@ def rent(request):
                 "Calefacción": heater,
                 "Lavadora": washing_machine,
                 "Secadora": dryer,
-                "Chimenea":chimney,
-                "Jacuzzi":jacuzzi,
-                "Sauna":sauna,
+                "Chimenea": chimney,
+                "Jacuzzi": jacuzzi,
+                "Sauna": sauna,
                 "juegos_de_mesa": board_games,
                 "Parqueadero": parking,
             }
 
             data = get_csv_data()
             predictions = arimax_prediction(data_property, data)
-
             formatted_predictions = f'{predictions:,.2f}'
-            #formatted_predictions = {6 - i: f'{prediction:,.2f}' for i, prediction in enumerate(reversed(predictions))}
-            data_property["price_estimated"] = formatted_predictions
+            data_property["price_per_night"] = formatted_predictions
 
-            print("Forms validado")
+            if 'save_property' in request.POST:
+                RentalProperty.objects.create(
+                    user=request.user,
+                    neighbourhood=neighbourhood,
+                    type=type,
+                    num_rooms=num_rooms,
+                    num_banos=num_banos,
+                    size=size,
+                    age=age,
+                    wifi=wifi,
+                    air_conditioner=air_conditioner,
+                    balcony=balcony,
+                    terrace=terrace,
+                    garden=garden,
+                    pool=pool,
+                    heater=heater,
+                    washing_machine=washing_machine,
+                    dryer=dryer,
+                    chimney=chimney,
+                    jacuzzi=jacuzzi,
+                    sauna=sauna,
+                    board_games=board_games,
+                    parking=parking,
+                    price_per_night=predictions
+                return redirect('profile')
+
+            print("Formulario validado")
             print(data_property)
             return render(
                 request, "rent.html", {"form": form, "results": data_property}
@@ -71,3 +93,16 @@ def rent(request):
         form = PropertyForm()
 
     return render(request, "rent.html", {"form": form})
+
+def edit_rental_property(request, property_id):
+    rental_property_instance = get_object_or_404(RentalProperty, id=property_id, user=request.user)
+
+    if request.method == "POST":
+        form = PropertyForm(request.POST, instance=rental_property_instance)
+        if form.is_valid():
+            form.save()
+            return redirect('profile')
+    else:
+        form = PropertyForm(instance=rental_property_instance)
+
+    return render(request, 'rent.html', {'form': form, 'property': rental_property_instance})

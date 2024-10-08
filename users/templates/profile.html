@@ -8,9 +8,11 @@
 
 <div class="content">
     <h3 class="profile_message">Mi Perfil</h3>
+    
+
     <div class="mb-3 card">
         <div class="card-body">
-            <h5>Propiedades Guardadas</h5>
+            <h5>Propiedades Guardadas de cálculo de Valorización</h5>
 
             {% if properties %}
                 <table class="table table-striped">
@@ -42,10 +44,50 @@
                     </tbody>
                 </table>
             {% else %}
-                <p>No tienes propiedades guardadas todavía.</p>
+                <p>No tienes propiedades guardadas para cálculo de valorización todavía.</p>
             {% endif %}
         </div>
     </div>  
+    
+    <div class="mb-3 card">
+        <div class="card-body">
+            <h5>Propiedades Guardadas para cálculo de Precio por Noche</h5>
+    
+            {% if rental_properties %}
+                <table class="table table-striped">
+                    <thead>
+                        <tr>
+                            <th>Barrio</th>
+                            <th>Habitaciones</th>
+                            <th>Baños</th>
+                            <th>Wifi</th>
+                            <th>Piscina</th>
+                            <th>Precio por Noche Estimado</th>
+                            <th>Modificar</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for rental_property in rental_properties %}
+                        <tr>
+                            <td>{{ rental_property.neighbourhood }}</td>
+                            <td>{{ rental_property.num_rooms }}</td>
+                            <td>{{ rental_property.num_banos }}</td>
+                            <td>{% if rental_property.wifi %} Sí {% else %} No {% endif %}</td>
+                            <td>{% if rental_property.pool %} Sí {% else %} No {% endif %}</td>
+                            <td>${{ rental_property.price_per_night }}</td>
+                            <td>
+                                <a href="{% url 'edit_rental_property' rental_property.id %}" class="btn btn-primary">Modificar</a>
+                            </td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            {% else %}
+                <p>No tienes propiedades guardadas para cálculo de precio por noche todavía.</p>
+            {% endif %}
+        </div>
+    </div>
+
 </div>
 
 <h6 class="profile_message">En esta sección puedes revisar las propiedades que has guardado y gestionarlas de manera segura.</h6>
