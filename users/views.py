@@ -6,10 +6,15 @@ from django.contrib import messages
 from .forms import CustomLoginForm, UserRegisterForm
 from django.shortcuts import render
 from valorizacion.models import Property
+from arrendamiento.models import RentalProperty
 
 def profile_view(request):
     properties = Property.objects.filter(user=request.user)
-    return render(request, "profile.html", {"properties": properties})
+    rental_properties = RentalProperty.objects.filter(user=request.user)
+    return render(request, "profile.html", {
+        "properties": properties,
+        'rental_properties': rental_properties
+                                            })
 
 
 def register(request):

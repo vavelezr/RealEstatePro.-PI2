@@ -1,7 +1,8 @@
 from django.shortcuts import render, get_object_or_404, redirect
-from .arima_test import *
+
 from .forms import PropertyForm
 from .models import Property
+from .arima_test import *
 
 
 

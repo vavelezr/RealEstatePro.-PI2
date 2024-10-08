@@ -1,7 +1,16 @@
 from django import forms
+from .models import RentalProperty
 
-class PropertyForm(forms.Form):
-
+class PropertyForm(forms.ModelForm):
+    class Meta:
+        model = RentalProperty
+        fields = [
+            'neighbourhood', 'num_rooms', 'num_banos', 'size', 'age',
+            'wifi', 'air_conditioner', 'balcony', 'terrace', 'garden',
+            'pool', 'heater', 'washing_machine', 'dryer', 'chimney', 
+            'jacuzzi', 'sauna', 'board_games', 'parking'
+        ]
+        
     BARRIOS_CHOICES = [
         ("laureles","Laureles"),
         ("el poblado","El Poblado"),
