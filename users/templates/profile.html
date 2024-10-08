@@ -9,7 +9,7 @@
 <div class="content">
     <h3 class="profile_message">Mi Perfil</h3>
     
-    <!-- Tabla de Propiedades Guardadas de Cálculo de Valorización -->
+
     <div class="mb-3 card">
         <div class="card-body">
             <h5>Propiedades Guardadas de cálculo de Valorización</h5>
@@ -49,7 +49,6 @@
         </div>
     </div>  
     
-    <!-- Tabla de Propiedades Guardadas para Cálculo de Precio por Noche -->
     <div class="mb-3 card">
         <div class="card-body">
             <h5>Propiedades Guardadas para cálculo de Precio por Noche</h5>
@@ -61,8 +60,8 @@
                             <th>Barrio</th>
                             <th>Habitaciones</th>
                             <th>Baños</th>
-                            <th>Wifi</th>  <!-- Nueva columna: Wifi -->
-                            <th>Piscina</th>  <!-- Nueva columna: Piscina -->
+                            <th>Wifi</th>
+                            <th>Piscina</th>
                             <th>Precio por Noche Estimado</th>
                             <th>Modificar</th>
                         </tr>
@@ -73,8 +72,8 @@
                             <td>{{ rental_property.neighbourhood }}</td>
                             <td>{{ rental_property.num_rooms }}</td>
                             <td>{{ rental_property.num_banos }}</td>
-                            <td>{% if rental_property.wifi %} Sí {% else %} No {% endif %}</td>  <!-- Mostrar "Sí" o "No" para Wifi -->
-                            <td>{% if rental_property.pool %} Sí {% else %} No {% endif %}</td>  <!-- Mostrar "Sí" o "No" para Piscina -->
+                            <td>{% if rental_property.wifi %} Sí {% else %} No {% endif %}</td>
+                            <td>{% if rental_property.pool %} Sí {% else %} No {% endif %}</td>
                             <td>${{ rental_property.price_per_night }}</td>
                             <td>
                                 <a href="{% url 'edit_rental_property' rental_property.id %}" class="btn btn-primary">Modificar</a>

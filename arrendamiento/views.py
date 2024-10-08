@@ -8,7 +8,6 @@ def rent(request):
         form = PropertyForm(request.POST)
         print(form.errors)
         if form.is_valid():
-            # Recogemos los datos del formulario
             neighbourhood = form.cleaned_data["neighbourhood"]
             type = form.cleaned_data["type"]
             num_rooms = form.cleaned_data["num_rooms"]
@@ -53,7 +52,6 @@ def rent(request):
                 "Parqueadero": parking,
             }
 
-            # Simulamos la predicción para el precio por noche
             data = get_csv_data()
             predictions = arimax_prediction(data_property, data)
             formatted_predictions = f'{predictions:,.2f}'
@@ -82,8 +80,7 @@ def rent(request):
                     sauna=sauna,
                     board_games=board_games,
                     parking=parking,
-                    price_per_night=predictions  # Guardamos la predicción del precio por noche
-                )
+                    price_per_night=predictions
                 return redirect('profile')
 
             print("Formulario validado")
