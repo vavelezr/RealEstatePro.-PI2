@@ -61,10 +61,10 @@ def rent(request):
             print("Forms validado")
             print(data_property)
             return render(
-                request, "calculate.html", {"form": form, "results": data_property}
+                request, "rent.html", {"form": form, "results": data_property}
             )
 
     else:
         form = PropertyForm()
 
-    return render(request, "calculate.html", {"form": form})
+    return render(request, "rent.html", {"form": form})

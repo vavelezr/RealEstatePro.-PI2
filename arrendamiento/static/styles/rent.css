@@ -1,0 +1,110 @@
+h2 {
+    text-align: center;
+    width: 100%;
+}
+
+.enviar{
+    background-color: rgb(255, 145, 149);
+    color: white;
+    width: 100%;
+    margin-bottom: 3%;
+    margin-top: 20%;
+    border-radius: 50px;
+    border:0px;
+}
+
+.save-btn {
+    background-color: rgb(255, 145, 149);
+    color: white;
+    border-radius: 50px;
+    border: 0px;
+    margin-bottom: 3%;
+    margin-top: 20%;
+    width: auto;
+}
+
+.col-md-6.d-flex.flex-column.align-items-center.justify-content-start {
+    align-items: center;  
+}
+
+form {
+    background-color: #eaeaea;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    width: 100%;
+}
+
+.text-center h5 {
+    margin-bottom: 10px;
+}
+
+.btn {
+    padding: 10px;
+    margin: 5px;
+}
+
+.result-box {
+    margin-top: 20px;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    background-color: #f9f9f9;
+    width: 100%;
+    max-width: 300px;
+}
+
+.row {
+    margin-bottom: 20px;
+}
+
+footer {
+    margin-top: 30px;
+}
+
+.img-fluid {
+    max-width: 100%;
+    height: auto;
+}
+
+/* Ayuda para forms */
+
+.tooltip-icon {
+    position: relative;
+    display: inline-block;
+    cursor: pointer;
+    color: #007bff; /* Color del icono de información */
+    font-weight: bold;
+}
+.tooltip-icon:hover .tooltip-text {
+    visibility: visible;
+    opacity: 1;
+}
+.tooltip-text {
+    visibility: hidden;
+    width: 200px;
+    background-color: #333;
+    color: #fff;
+    text-align: center;
+    border-radius: 5px;
+    padding: 5px;
+    position: absolute;
+    z-index: 1;
+    bottom: 125%; /* Posiciona el tooltip sobre el icono */
+    left: 50%;
+    margin-left: -100px;
+    opacity: 0;
+    transition: opacity 0.3s;
+}
+/* Flecha del tooltip */
+.tooltip-text::after {
+    content: "";
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    margin-left: -5px;
+    border-width: 5px;
+    border-style: solid;
+    border-color: #333 transparent transparent transparent;
+}
+

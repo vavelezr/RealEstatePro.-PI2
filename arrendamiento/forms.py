@@ -1,6 +1,6 @@
 from django import forms
 
-class PropertyForm(forms.ModelForm):
+class PropertyForm(forms.Form):
 
     BARRIOS_CHOICES = [
         ("Calasanz", "Calasanz"),
