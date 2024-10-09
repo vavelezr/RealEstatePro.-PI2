@@ -6,6 +6,7 @@ from .forms import PropertyForm
 def rent(request):
     if request.method == "POST":
         form = PropertyForm(request.POST)
+        print(form.data)
         print(form.errors)
         if form.is_valid():
             neighbourhood = form.cleaned_data["neighbourhood"]
