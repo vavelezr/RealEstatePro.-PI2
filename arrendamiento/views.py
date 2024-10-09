@@ -81,6 +81,7 @@ def rent(request):
                     board_games=board_games,
                     parking=parking,
                     price_per_night=predictions
+                    )
                 return redirect('profile')
 
             print("Formulario validado")
