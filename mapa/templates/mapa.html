@@ -1,0 +1,11 @@
+{% extends 'layout.html' %}
+{% block content %}
+
+<body>
+    <h1 style="text-align: center;">Mapa de Precios Promedio de Vivienda en Medellín</h1>
+    <div id="map"">
+        {{ mapa_html|safe }} 
+    </div>
+</body>
+
+{% endblock %}

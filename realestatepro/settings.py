@@ -43,7 +43,7 @@ INSTALLED_APPS = [
     "django_sass",
     "valorizacion",
     "arrendamiento",
-    
+    "mapa",
 ]
 
 MIDDLEWARE = [
