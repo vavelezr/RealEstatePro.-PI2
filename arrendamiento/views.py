@@ -57,6 +57,9 @@ def rent(request):
             predictions = arimax_prediction(data_property, data)
             formatted_predictions = f'{predictions:,.2f}'
             data_property["price_per_night"] = formatted_predictions
+            average_price = calculate_average_price(data, data_property["Ubicación"])
+            formatted_average = f'{average_price:,.2f}'
+            data_property["average"] = formatted_average
 
             if 'save_property' in request.POST:
                 RentalProperty.objects.create(

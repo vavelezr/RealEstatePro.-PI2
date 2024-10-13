@@ -293,8 +293,22 @@
                     <div id="grafico2" class="result-box">
                         <h3>Valor por noche:</h3>
                         <br>
-                        {% if results.price_estimated %}
-                            <h4>{{ results.price_estimated }}</h4>
+                        {% if results.price_per_night %}
+                            <h4>{{ results.price_per_night }}</h4>
+                        {% else %}
+                            <h5>Oprime el botón 'Calcular valor por noche' para mostrar resultado</h5>
+                        {% endif %}
+                    </div>
+                </div>
+                
+            </div>
+            <div class="row w-100 mb-4">
+                <div class="col-md-6 text-center">
+                    <div id="grafico2" class="result-box">
+                        <h3>Valor promedio del barrio escogido:</h3>
+                        <br>
+                        {% if results.Ubicación %}
+                            <h4>{{ results.average }}</h4>
                         {% else %}
                             <h5>Oprime el botón 'Calcular valor por noche' para mostrar resultado</h5>
                         {% endif %}

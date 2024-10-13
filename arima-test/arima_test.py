@@ -200,3 +200,34 @@ def arimax_prediction(user_data_dict, merged_data):
     print(predictions)
 
     return predictions"""
+
+'''scaler_price = StandardScaler()
+    target_ts_scaled = scaler_price.fit_transform(
+        target_ts.values.reshape(-1, 1)
+    ).flatten()
+    scaler_exog = StandardScaler()
+    exog_vars_scaled = scaler_exog.fit_transform(exog_vars)
+    target_ts_diff = np.diff(target_ts_scaled)
+    model = SARIMAX(target_ts_diff, exog=exog_vars_scaled[:-1], order=(1, 1, 1))
+    model_fit = model.fit(disp=False)
+    user_exog_vars = user_data[
+        ["Habitaciones", "Baños", "tamaño(m2)", "age", "Wi-Fi", "aire_acondicionado", "Balcón","Terraza", "Jardín", "Piscina", "Calefacción", "Lavadora", "Secadora", "Chimenea", "Jacuzzi", "Sauna", "juegos_de_mesa", "Parqueadero"]
+    ]
+    user_exog_vars_replicated = pd.concat([user_exog_vars] * 5, ignore_index=True)
+    user_exog_vars_scaled = scaler_exog.transform(user_exog_vars_replicated)
+    predictions_diff = model_fit.forecast(steps=5, exog=user_exog_vars_scaled)
+    predictions_scaled = np.r_[target_ts_scaled[-1], predictions_diff].cumsum()
+    predictions = scaler_price.inverse_transform(
+        predictions_scaled.reshape(-1, 1)
+).flatten()
+    
+    model = SARIMAX(target_ts, exog=exog_vars, order=(1,1,1))
+    model_fit = model.fit(disp=False)
+
+    user_exog_vars = user_data[
+        ["Habitaciones", "Baños", "tamaño(m2)", "age", "Wi-Fi", "aire_acondicionado", "Balcón","Terraza", "Jardín", "Piscina", "Calefacción", "Lavadora", "Secadora", "Chimenea", "Jacuzzi", "Sauna", "juegos_de_mesa", "Parqueadero"]
+    ]
+
+    predictions = model_fit.forecast(steps=len(user_data), exog=user_exog_vars)
+
+    ).flatten()'''
