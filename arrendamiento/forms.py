@@ -18,7 +18,7 @@ class PropertyForm(forms.ModelForm):
         ("castilla","Castilla"),
         ("popular","Popular"),
         ("villa hermosa","Villa Hermosa"),
-        ("Aranjuez", "aranjuez"),
+        ("aranjuez", "Aranjuez"),
         ("manrique","Manrique"),
         ("doce de octubre","Doce de Octubre"),
         ("santa cruz","Santa Cruz"),
