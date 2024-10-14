@@ -63,7 +63,7 @@ def calculate(request):
                     size=size,
                     price_administration=price_administration,
                     age=age,
-                    garages=garajes,
+                    garajes=garajes,
                     stratum=stratum,
                     estimated_price=predictions[-1]
                 )

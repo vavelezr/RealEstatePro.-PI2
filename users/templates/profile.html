@@ -12,7 +12,7 @@
 
     <div class="mb-3 card">
         <div class="card-body">
-            <h5>Propiedades Guardadas de cálculo de Valorización</h5>
+            <h5>Valorización de Propiedades Guardadas</h5>
 
             {% if properties %}
                 <table class="table table-striped">
@@ -37,7 +37,7 @@
                             <td>{{ property.size }} m²</td>
                             <td>${{ property.estimated_price }}</td>
                             <td>
-                                <a href="{% url 'edit_property' property.id %}" class="btn btn-primary">Modificar</a>
+                                <a href="{% url 'edit_property' property.id %}" class="modify-btn">Modificar</a>
                             </td>
                         </tr>
                         {% endfor %}
@@ -51,7 +51,7 @@
     
     <div class="mb-3 card">
         <div class="card-body">
-            <h5>Propiedades Guardadas para cálculo de Precio por Noche</h5>
+            <h5>Precio por Noche de Propiedades Guardadas</h5>
     
             {% if rental_properties %}
                 <table class="table table-striped">
@@ -60,8 +60,8 @@
                             <th>Barrio</th>
                             <th>Habitaciones</th>
                             <th>Baños</th>
-                            <th>Wifi</th>
-                            <th>Piscina</th>
+                            <th>Tamaño (m²)</th>
+                            <th>Comodidades</th>
                             <th>Precio por Noche Estimado</th>
                             <th>Modificar</th>
                         </tr>
@@ -72,11 +72,35 @@
                             <td>{{ rental_property.neighbourhood }}</td>
                             <td>{{ rental_property.num_rooms }}</td>
                             <td>{{ rental_property.num_banos }}</td>
-                            <td>{% if rental_property.wifi %} Sí {% else %} No {% endif %}</td>
-                            <td>{% if rental_property.pool %} Sí {% else %} No {% endif %}</td>
+                            <td>{{ rental_property.size }} m²</td>
+                            
+                            <td> 
+                                {{ rental_property.amenities_count }}
+                                <span class="tooltip-icon"> ℹ
+                                    <span class="tooltip-text">
+                                        Comodidades activas:
+                                        <ul>
+                                            {% if rental_property.wifi %}<li>WiFi</li>{% endif %}
+                                            {% if rental_property.air_conditioner %}<li>Aire acondicionado</li>{% endif %}
+                                            {% if rental_property.balcony %}<li>Balcón</li>{% endif %}
+                                            {% if rental_property.terrace %}<li>Terraza</li>{% endif %}
+                                            {% if rental_property.garden %}<li>Jardín</li>{% endif %}
+                                            {% if rental_property.pool %}<li>Piscina</li>{% endif %}
+                                            {% if rental_property.heater %}<li>Calefacción</li>{% endif %}
+                                            {% if rental_property.washing_machine %}<li>Lavadora</li>{% endif %}
+                                            {% if rental_property.dryer %}<li>Secadora</li>{% endif %}
+                                            {% if rental_property.chimney %}<li>Chimenea</li>{% endif %}
+                                            {% if rental_property.jacuzzi %}<li>Jacuzzi</li>{% endif %}
+                                            {% if rental_property.sauna %}<li>Sauna</li>{% endif %}
+                                            {% if rental_property.board_games %}<li>Juegos de mesa</li>{% endif %}
+                                            {% if rental_property.parking %}<li>Parqueadero</li>{% endif %}
+                                        </ul>
+                                    </span>
+                                </span>
+                            </td>
                             <td>${{ rental_property.price_per_night }}</td>
                             <td>
-                                <a href="{% url 'edit_rental_property' rental_property.id %}" class="btn btn-primary">Modificar</a>
+                                <a href="{% url 'edit_rental_property' rental_property.id %}" class="modify-btn">Modificar</a>
                             </td>
                         </tr>
                         {% endfor %}
@@ -93,3 +117,5 @@
 <h6 class="profile_message">En esta sección puedes revisar las propiedades que has guardado y gestionarlas de manera segura.</h6>
 
 {% endblock %}
+
+
