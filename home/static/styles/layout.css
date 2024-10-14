@@ -24,9 +24,11 @@ html, body{
                 color: white;
             }
 
-            .option_item{
-               margin-right: 65vw;
-            }
+           
+        }
+
+        .layout__navbar .option_item {
+            margin-right: 50vw !important;
         }
 
 
@@ -51,8 +53,4 @@ html, body{
         width: 100%;
         text-align: center;
     }
-}
-
-.auth_item{
-
 }
