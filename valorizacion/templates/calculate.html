@@ -154,8 +154,14 @@
                         <button type="button" class="enviar w-100">Calculo precio por noche</button>
                     </div>
                 </div>
-                <button type="submit" name="save_property" class="btn save-btn w-100">Guardar información de propiedad</button>
-            </form>
+                {% if user.is_authenticated %}
+                    <button type="submit" name="save_property" class="btn save-btn w-100">Guardar información de propiedad</button>
+                {% else %}
+                    <div class="alert alert-warning text-center" role="alert">
+                        Primero registrate para acceder a la funcionalidad de <strong>guardar información</strong>
+                    </div>
+                {% endif %}
+                </form>
         </div>
 
         <!-- Sección de Botones, Gráficos y resultss a la derecha -->
