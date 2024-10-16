@@ -2,10 +2,16 @@
 {% block content %}
 
 <body>
-    <h1 style="text-align: center;">Mapa de Precios Promedio de Vivienda en Medellín</h1>
-    <div id="map"">
-        {{ mapa_html|safe }} 
+    <h1 style="text-align: center;">Mapa de Precios Venta Promedio de Vivienda en Medellín por Barrio</h1>
+    <div style="width: 60%; margin: auto;">
+        {{ mapa_html|safe }}
     </div>
+    <p style="text-align: center; margin-top: 15px; font-size: 18px; color: gray;">
+        Deslice con el cursor para visualizar precio de venta de una propiedad de acuerdo a su barrio.
+    </p>
 </body>
 
 {% endblock %}
+
+
+
