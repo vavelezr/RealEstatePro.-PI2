@@ -151,14 +151,14 @@
                         <button type="submit" class="enviar w-100">Calcular valorización futura</button>
                     </div>
                     <div class="col-md-6 text-center">
-                        <button type="button" class="enviar w-100">Calculo precio por noche</button>
+                        <button type="button" class="enviar w-100">Calcular precio por noche</button>
                     </div>
                 </div>
                 {% if user.is_authenticated %}
                     <button type="submit" name="save_property" class="btn save-btn w-100">Guardar información de propiedad</button>
                 {% else %}
                     <div class="alert alert-warning text-center" role="alert">
-                        Primero registrate para acceder a la funcionalidad de <strong>guardar información</strong>
+                        Regístrate primero para acceder a la funcionalidad de <strong>guardar información</strong>
                     </div>
                 {% endif %}
                 </form>
@@ -173,7 +173,7 @@
                         {% if results.price_estimated %}
                             <canvas id="propertyValueChart"></canvas>
                         {% else %}
-                            <h5>Oprime el botón 'Calcular valorización futura' para mostrar grafico</h5>
+                            <h5>Haz clic en el botón 'Calcular valorización futura' para mostrar el gráfico</h5>
                         {% endif %}
                     </div>
                 </div>
@@ -181,7 +181,7 @@
                 <div class="col-md-6 text-center">
                     <div id="grafico2" class="result-box">
                         <!-- Placeholder para gráfico 2 -->
-                        <h5>Proximamente está funcionalidad estará en Realstatepro</h5>
+                        <h5>Esta funcionalidad estará disponible próximamente en RealEstatePro.</h5>
                     </div>
                 </div>
             </div>
@@ -195,7 +195,7 @@
                         <h4>{{ year }} año: {{ prediction }}</h4>
                     {% endfor %}
                 {% else %}
-                    <h4>Oprime el botón 'Calcular valorización futura' para mostrar resultado</h4>
+                    <h4>Haz clic en el botón 'Calcular valorización futura' para mostrar el resultado</h4>
                 {% endif %}
                 
                 </div>

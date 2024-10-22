@@ -278,14 +278,14 @@
                         <a href="{% url 'calculate' %}"><button type="button" class="enviar w-100">Calcular valorización futura</button></a>
                     </div>
                     <div class="col-md-6 text-center">
-                        <button type="submit" class="enviar w-100">Calculo precio por noche</button>
+                        <button type="submit" class="enviar w-100">Calcular precio por noche</button>
                     </div>
                 </div>
                 {% if user.is_authenticated %}
                 <button type="submit" name="save_property" class="btn save-btn w-100">Guardar información de propiedad</button>
             {% else %}
                 <div class="alert alert-warning text-center" role="alert">
-                    Primero registrate para acceder a la funcionalidad de <strong>guardar información</strong>
+                    Regístrate primero para acceder a la funcionalidad de <strong>guardar información</strong>
                 </div>
             {% endif %}
 
@@ -303,7 +303,7 @@
                         {% if results.price_per_night %}
                             <h4>{{ results.price_per_night }}</h4>
                         {% else %}
-                            <h5>Oprime el botón 'Calcular valor por noche' para mostrar resultado</h5>
+                            <h5>Haz clic en el botón 'Calcular valor por noche' para mostrar el resultado</h5>
                         {% endif %}
                     </div>
                 </div>
@@ -312,12 +312,12 @@
             <div class="row w-100 mb-4">
                 <div class="col-md-6 text-center">
                     <div id="grafico2" class="result-box">
-                        <h3>Valor promedio del barrio escogido:</h3>
+                        <h3>Valor promedio del barrio seleccionado</h3>
                         <br>
                         {% if results.Ubicación %}
                             <h4>{{ results.average }}</h4>
                         {% else %}
-                            <h5>Oprime el botón 'Calcular valor por noche' para mostrar resultado</h5>
+                            <h5>Haz clic en el botón 'Calcular valor por noche' para mostrar el resultado</h5>
                         {% endif %}
                     </div>
                 </div>
