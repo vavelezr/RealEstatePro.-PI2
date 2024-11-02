@@ -1,16 +1,78 @@
 {% extends 'layout.html' %}
 {% block content %}
-
+    <style>
+        #map-container {
+            display: flex;
+            width: 100%;
+            height: 100vh;
+        }
+        #map {
+            flex: 1;
+            height: 100%;
+        }
+        #sidebar {
+            width: 350px;
+            padding: 20px;
+            background-color: #f7f7f7;
+            box-shadow: -2px 0px 5px rgba(0, 0, 0, 0.1);
+        }
+        #map-type-selector {
+            margin-bottom: 20px;
+        }
+        .info-box {
+            padding: 10px;
+            margin-bottom: 15px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+    </style>
 <body>
-    <h1 style="text-align: center;">Mapa de Precios Venta Promedio de Vivienda en Medellín por Barrio</h1>
-    <div style="width: 60%; margin: auto;">
-        {{ mapa_html|safe }}
+    <div id="map-container">
+        <div id="map">
+            {{ mapa_html|safe }}
+        </div>
+        <div id="sidebar">
+            <div id="map-type-selector">
+                <label for="map-type">Seleccione tipo de mapa:</label>
+                <select id="map-type" onchange="changeMap()">
+                    <option value="venta">Mapa de Venta</option>
+                    <option value="alquiler">Mapa de Alquiler</option>
+                </select>
+            </div>
+            <div id="map-info">
+                <h3>
+                    {% if map_type == "venta" %}
+                        Barrios y su promedio de venta
+                    {% elif map_type == "alquiler" %}
+                        Barrios y su promedio por noche de alquiler
+                    {% endif %}
+                </h3>
+                <div class="info-box">
+                    <p>Deslice con el cursor sobre cada barrio para visualizar la informacion de este </p>
+                </div>
+            </div>
+        </div>
     </div>
-    <p style="text-align: center; margin-top: 15px; font-size: 18px; color: gray;">
-        Deslice con el cursor para visualizar precio de venta de una propiedad de acuerdo a su barrio.
-    </p>
-</body>
 
+    <script>
+        // Ajustar el valor del selector según el tipo de mapa actual
+        document.addEventListener("DOMContentLoaded", function() {
+            const mapType = "{{ map_type }}";
+            document.getElementById("map-type").value = mapType;
+        });
+
+        function changeMap() {
+            const mapType = document.getElementById("map-type").value;
+            if (mapType === "venta") {
+                // Solicitar la vista del mapa de venta
+                window.location.href = "/mapa/venta";
+            } else if (mapType === "alquiler") {
+                // Solicitar la vista del mapa de alquiler
+                window.location.href = "/mapa/alquiler";
+            }
+        }
+    </script>
+</body>
 {% endblock %}
 
 
