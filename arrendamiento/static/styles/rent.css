@@ -1,5 +1,5 @@
 .checkbox-group {
-    display: flex;
+    /* display: flex; */
     align-items: flex-start;
     margin-bottom: 15px;
 }
@@ -28,20 +28,20 @@
 
 /* Ajuste del checkbox y el ícono de información */
 .checkbox-container label input[type="checkbox"] {
-    margin-right: 5px; /* Espacio entre el checkbox y el texto */
+    margin-right: 10px; /* Espacio entre el checkbox y el texto */
 }
 
-.tooltip-icon {
-    margin-left: 5px; /* Espacio entre el texto y el ícono de información */
+/* .tooltip-icon {
+    margin-left: 5px; 
     font-weight: bold;
     color: #007bff;
     cursor: pointer;
     position: relative;
 }
 
-/* Tooltip estilos */
+
 .tooltip-text {
-    visibility: hidden;
+    visibility: hidden; 
     width: 180px;
     background-color: #333;
     color: #fff;
@@ -50,7 +50,7 @@
     padding: 5px;
     position: absolute;
     z-index: 1;
-    bottom: 125%; /* Ubicación del tooltip encima del icono */
+    bottom: 125%; 
     left: 50%;
     transform: translateX(-50%);
     opacity: 0;
@@ -62,14 +62,13 @@
     opacity: 1;
 }
 
-/* Flecha del tooltip */
 .tooltip-text::after {
     content: "";
     position: absolute;
-    top: 100%; /* Ubicación de la flecha en la parte inferior del tooltip */
+    top: 100%;
     left: 50%;
     margin-left: -5px;
     border-width: 5px;
     border-style: solid;
     border-color: #333 transparent transparent transparent;
-}
+} */

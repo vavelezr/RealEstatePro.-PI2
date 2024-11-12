@@ -169,8 +169,8 @@
     
         <!-- Sección de Botones, Gráficos y resultados -->
         <div class="results-section">
-            <div class="row w-100 mb-4">
-                <div class="col-md-6 text-center">
+            <div class="w-100">
+                <div class="col-md-12 text-center">
                     <div id="grafico2" class="result-box">
                         {% if results.price_estimated %}
                             <canvas id="propertyValueChart" width="400" height="300"></canvas>
@@ -187,8 +187,8 @@
                 </div> -->
             </div>
     
-            <div class="col-md-6 text-center">
-                <h3>Valor estimado:</h3>
+            <div class="col-md-5 text-center">
+                <!-- <h3>Valor estimado:</h3> -->
                 <table class="table table-striped">
                     <thead>
                         <tr>
@@ -201,7 +201,7 @@
                             {% for year, prediction in results.price_estimated.items %}
                                 <tr>
                                     <td>{{ year }} año</td>
-                                    <td>{{ prediction }}</td>
+                                    <td>COP {{ prediction }}</td>
                                 </tr>
                             {% endfor %}
                         {% else %}
@@ -252,7 +252,7 @@
                 y: {
                     title: {
                         display: true,
-                        text: 'Valorización'
+                        text: 'Valorización COP'
                     },
                     beginAtZero: false // Los valores de Y empiezan desde el valor mínimo
                 }

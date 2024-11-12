@@ -64,7 +64,7 @@ def mapa_view(request):
         style_function=style_function,
         tooltip=folium.GeoJsonTooltip(
             fields=['NOMBRE', 'price'],
-            aliases=['Barrio: ', 'Precio promedio: '],
+            aliases=['Barrio: ', 'Precio promedio: COP'],
             localize=True
         )
     ).add_to(mapa)
@@ -130,7 +130,7 @@ def mapa_alquiler_view(request):
         style_function=style_function,
         tooltip=folium.GeoJsonTooltip(
             fields=['NOMBRE', 'price'],
-            aliases=['Barrio: ', 'Precio promedio: '],
+            aliases=['Barrio: ', 'Precio promedio: COP'],
             localize=True
         )
     ).add_to(mapa)

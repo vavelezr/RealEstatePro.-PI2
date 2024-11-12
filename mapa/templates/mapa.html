@@ -18,12 +18,17 @@
         }
         #map-type-selector {
             margin-bottom: 20px;
+            border-radius: 10px;
         }
         .info-box {
             padding: 10px;
             margin-bottom: 15px;
             border: 1px solid #ddd;
             border-radius: 5px;
+        }
+        #map-type{
+            border-radius: 8px;
+            border-color: #e2d9d9;
         }
     </style>
 <body>
@@ -32,21 +37,21 @@
             {{ mapa_html|safe }}
         </div>
         <div id="sidebar">
-            <div id="map-type-selector">
+            <div id="map-type-selector" class="row mb-3">
                 <label for="map-type">Seleccione tipo de mapa:</label>
-                <select id="map-type" onchange="changeMap()">
+                <select id="map-type" onchange="changeMap()" class="col-sm-10 col-form-label">
                     <option value="venta">Mapa de Venta</option>
                     <option value="alquiler">Mapa de Alquiler</option>
                 </select>
             </div>
             <div id="map-info">
-                <h3>
+                <h5>
                     {% if map_type == "venta" %}
                         Barrios y su promedio de venta
                     {% elif map_type == "alquiler" %}
                         Barrios y su promedio por noche de alquiler
                     {% endif %}
-                </h3>
+                </h5>
                 <div class="info-box">
                     <p>Deslice con el cursor sobre cada barrio para visualizar la informacion de este </p>
                 </div>

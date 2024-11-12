@@ -26,7 +26,7 @@ h2 {
 /* Contenedor de la sección de resultados */
 .results-section {
     background-color: #f9f9f9;
-    padding: 20px;
+    padding: 5px;
     border-radius: 10px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     display: flex;
@@ -91,9 +91,9 @@ input[type="text"]:focus, select:focus, input[type="number"]:focus {
 }
 
 .save-btn {
-    background-color: rgb(255, 145, 149);
+    background-color: rgb(253, 212, 135);
     color: white;
-    border: none;
+    /* border: none; */
     padding: 12px 20px;
     font-size: 16px;
     border-radius: 25px;
@@ -103,7 +103,9 @@ input[type="text"]:focus, select:focus, input[type="number"]:focus {
 }
 
 .save-btn:hover {
-    background-color: #ff7075;
+    background-color: white;
+    color: black;
+    border-color: black;
 }
 
 /* Caja de resultados */

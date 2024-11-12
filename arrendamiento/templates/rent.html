@@ -10,7 +10,7 @@
 
 <div class="calculate_form">
     <div class="container"> 
-        <h2>Formulario de Proyección de Valor</h2>
+        <h2>Formulario de proyección de valor por noche</h2>
         
         <!-- Contenedor del formulario -->
         <div class="form-container">
@@ -95,14 +95,16 @@
                 
             
                 <div class="row mb-3 checkbox-group">
-                    <label class="col-form-label">Comodidades:</label>
-                    <div class="checkbox-container">
+                    <label class="col-form-label">Comodidades:</label><p>Marca las comodidades con las que cuenta tu propiedad</p>
+                    <div class="checkbox-container" style=" display: grid;
+    grid-template-columns: 1fr 1fr 1fr;">
                         <label>
                             {{ form.wifi }} WiFi
                             <span class="tooltip-icon">ℹ
                                 <span class="tooltip-text">Marca si el inmueble cuenta con red WiFi</span>
                             </span>
                         </label>
+
                         <label>
                             {{ form.air_conditioner }} Aire acondicionado
                             <span class="tooltip-icon">ℹ
@@ -184,10 +186,10 @@
                     </div>
                 </div>
                 
-                <div class="row w-100 mb-4">
-                    <div class="col-md-6 text-center">
+                <div class="row w-100 mb-4 justify-content-center">
+                    <!-- <div class="col-md-6 text-center">
                         <a href="{% url 'calculate' %}"><button type="button" class="enviar w-100">Calcular valorización futura</button></a>
-                    </div>
+                    </div> -->
                     <div class="col-md-6 text-center">
                         <button type="submit" class="enviar w-100">Calcular precio por noche</button>
                     </div>
@@ -208,7 +210,7 @@
             <div class="result-box">
                 <h3>Valor por noche:</h3>
                 {% if results.price_per_night %}
-                    <p>{{ results.price_per_night }}</p>
+                    <p> COP {{ results.price_per_night }}</p>
                 {% else %}
                     <p>Haz clic en "Calcular precio por noche" para ver el resultado</p>
                 {% endif %}
@@ -216,7 +218,7 @@
             <div class="result-box">
                 <h3>Valor promedio del barrio seleccionado</h3>
                 {% if results.average %}
-                    <p>{{ results.average }}</p>
+                    <p> COP {{ results.average }}</p>
                 {% else %}
                     <p>Haz clic en "Calcular valorización futura" para ver el resultado</p>
                 {% endif %}

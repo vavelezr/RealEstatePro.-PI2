@@ -35,7 +35,7 @@
                             <td>{{ property.num_rooms }}</td>
                             <td>{{ property.num_banos }}</td>
                             <td>{{ property.size }} m²</td>
-                            <td>${{ property.estimated_price }}</td>
+                            <td>COP {{ property.estimated_price }}</td>
                             <td>
                                 <a href="{% url 'edit_property' property.id %}" class="modify-btn">Modificar</a>
                             </td>
@@ -98,7 +98,7 @@
                                     </span>
                                 </span>
                             </td>
-                            <td>${{ rental_property.price_per_night }}</td>
+                            <td>COP {{ rental_property.price_per_night }}</td>
                             <td>
                                 <a href="{% url 'edit_rental_property' rental_property.id %}" class="modify-btn">Modificar</a>
                             </td>
