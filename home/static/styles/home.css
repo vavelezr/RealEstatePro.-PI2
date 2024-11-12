@@ -1,14 +1,48 @@
 .home_box{
-    display: grid;
+    display: flex;
+    align-items: center; /* Centra verticalmente los elementos dentro del contenedor */
+    gap: 20px; /* Espacio entre el contenido y la imagen */
     justify-content: space-evenly;
-    margin-top: 5vh;
+    /* margin-top: 5vh; */
     flex: 1;
-    margin-top: 10vh;
-    place-items: center;
+    width: 100%;
+    /* place-items: center; */
+}
+
+.home_message{
+    width: 50%;
+    font-size: 25px;
+}
+
+.home_image{
+    position: relative;
+    height: 90vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    /* margin-left: 2vw; */
+}
+
+.home_image img {
+    width: 100%; /* Hace que la imagen ocupe todo el espacio de su contenedor */
+    height: 80vh;
+    object-fit: cover; /* Evita distorsiones en la imagen */
+    max-width: 500px;
+    border-radius: 10px; /* Opcional: agrega bordes redondeados a la imagen */
+}
+
+.background-image {
+    width: 100%;
+    height: auto;
+    object-fit: cover; 
+    border-radius: 10px;
+    opacity: 0.5; /* Ajusta la opacidad según lo que necesites */
 }
 
 .welcome_message{
     text-align: center;
+    font-weight: 400;
 }
 
 .welcome_description_message{
@@ -21,13 +55,38 @@
     font-weight: lighter;
 }
 
+.home_button_group{
+    display: flex;
+    justify-content: space-around;
+}
+
 .btn-custom{
-    background-color: rgba(255, 90, 96, 1);
-    color: white;
+    background-color: rgb(253, 253, 253);
+    color: black;
+    border-color:black;
+    border-width: 1px;
     width: 20vw;
     margin-bottom: 3%;
-    margin-top: 5%;
-    
+    /* margin-top: 5%; */
+}
+.btn-custom-large{
+    background-color: rgb(253, 253, 253);
+    color: black;
+    border-color:black;
+    border-width: 1px;
+    width: 28vw;
+    margin-bottom: 3%;
+    /* margin-top: 5%; */
+}
+
+.btn-custom:hover{
+    color: white;
+    background-color: black;
+}
+
+.btn-custom-large:hover{
+    color: white;
+    background-color: black;
 }
 
 .home_button{

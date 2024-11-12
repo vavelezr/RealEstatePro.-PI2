@@ -7,35 +7,46 @@ html, body{
 
     .layout{
         margin: 0;
-        background-color:  rgba(255, 90, 96, 0.6667);
-        color: white;
+        background-color:  rgba(249, 249, 249, 0.976);
+        color: black;
         display: flex;
-        height: 12vh;
+        height: 80px;
 
         .layout__navbar{
 
             width: 100%;
 
             .navbar-brand{
-                color: white;
+                color: black;
             }
 
             .nav-link{
-                color: white;
-            }
-
-           
+                color: black;
+            }           
         }
 
-        .layout__navbar .option_item {
-            margin-right: 50vw !important;
-        }
+        /* .layout__navbar .option_item {
+            margin-right: 40vw !important;
+        }     */
 
+        .navbar_left{
+            display: flex;
+        }
 
         h1{
             margin: 2vh;
             font-size: 50px;
             font-weight: lighter;
+        }
+    }
+
+    .layout:hover{
+        background-color: black;
+        .navbar-brand{
+            color: white;
+        }
+        .nav-link{
+            color: white;
         }
     }
 

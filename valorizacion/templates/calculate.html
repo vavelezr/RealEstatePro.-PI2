@@ -7,12 +7,16 @@
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
 {% endblock extra_css %}
-<div class="container-fluid">
-    <div class="row">
+<div class="calculate_form">
+
+    <div class="container-fluid">
         <h2 class="mb-4 text-center">Formulario de Proyección de Valor</h2>
-        <div class="col-md-6 d-flex flex-column align-items-start justify-content-center">
+    
+        <!-- Contenedor del formulario -->
+        <div class="form-container">
             <form method="post">
                 {% csrf_token %}
+                <!-- Campos del formulario -->
                 <div class="row mb-3">
                     <label for="id_neighbourhood" class="col-sm-4 col-form-label">
                         Barrio:
@@ -144,15 +148,14 @@
                         {{ form.stratum }}
                     </div>
                 </div>
-                
-
-                <div class="row w-100 mb-4">
+    
+                <div class="row w-100 mb-4 justify-content-center">
                     <div class="col-md-6 text-center">
                         <button type="submit" class="enviar w-100">Calcular valorización futura</button>
                     </div>
-                    <div class="col-md-6 text-center">
-                        <button type="button" class="enviar w-100">Calcular precio por noche</button>
-                    </div>
+                    <!-- <div class="col-md-6 text-center">
+                        <button type="button" class="option w-100">Calcular precio por noche</button>
+                    </div> -->
                 </div>
                 {% if user.is_authenticated %}
                     <button type="submit" name="save_property" class="btn save-btn w-100">Guardar información de propiedad</button>
@@ -161,55 +164,58 @@
                         Regístrate primero para acceder a la funcionalidad de <strong>guardar información</strong>
                     </div>
                 {% endif %}
-                </form>
+            </form>
         </div>
-
-        <!-- Sección de Botones, Gráficos y resultss a la derecha -->
-        <div class="col-md-6 d-flex flex-column align-items-center justify-content-start">
-
+    
+        <!-- Sección de Botones, Gráficos y resultados -->
+        <div class="results-section">
             <div class="row w-100 mb-4">
                 <div class="col-md-6 text-center">
                     <div id="grafico2" class="result-box">
                         {% if results.price_estimated %}
-                            <canvas id="propertyValueChart"></canvas>
+                            <canvas id="propertyValueChart" width="400" height="300"></canvas>
                         {% else %}
                             <h5>Haz clic en el botón 'Calcular valorización futura' para mostrar el gráfico</h5>
                         {% endif %}
                     </div>
                 </div>
                 
-                <div class="col-md-6 text-center">
+                <!-- <div class="col-md-6 text-center">
                     <div id="grafico2" class="result-box">
-                        <!-- Placeholder para gráfico 2 -->
                         <h5>Esta funcionalidad estará disponible próximamente en RealEstatePro.</h5>
                     </div>
-                </div>
+                </div> -->
             </div>
-
-            <div class="row w-100">
-                <div class="col-md-6 text-center">
-                    <h3>Valor estimado:</h3>
-                    <br>
-                    {% if results.price_estimated %}
-                    {% for year, prediction in results.price_estimated.items %}
-                        <h4>{{ year }} año: {{ prediction }}</h4>
-                    {% endfor %}
-                {% else %}
-                    <h4>Haz clic en el botón 'Calcular valorización futura' para mostrar el resultado</h4>
-                {% endif %}
-                
-                </div>
-                <div class="col-md-6 text-center">
-                    <h3>Valor por noche:</h3>
-                    <br>
-                    <br>    
-                    <h4>Proximamente</h4>
-                </div>
-                
+    
+            <div class="col-md-6 text-center">
+                <h3>Valor estimado:</h3>
+                <table class="table table-striped">
+                    <thead>
+                        <tr>
+                            <th>Año</th>
+                            <th>Valor Estimado</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% if results.price_estimated %}
+                            {% for year, prediction in results.price_estimated.items %}
+                                <tr>
+                                    <td>{{ year }} año</td>
+                                    <td>{{ prediction }}</td>
+                                </tr>
+                            {% endfor %}
+                        {% else %}
+                            <tr>
+                                <td colspan="2">Haz clic en el botón 'Calcular valorización futura' para mostrar el resultado</td>
+                            </tr>
+                        {% endif %}
+                    </tbody>
+                </table>
             </div>
         </div>
     </div>
 </div>
+
 
 
 

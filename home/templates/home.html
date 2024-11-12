@@ -5,22 +5,30 @@
 <link rel="stylesheet" href="{% static 'styles/home.css' %}">
 {% endblock extra_css %}
 <div class="home_box">
-    <h1 class="welcome_message">Bienvenido a RealEstatePro</h1>
-    <hr>
-    <!-- <h3 class="welcome_description_message">Aqui podrás validar tus decisiones de inversión a través de análisis predictivos</h3> -->
-    <h3 class="about_us_message">¿Quieres conocer el valor futuro de tu vivienda o saber <br>
-        cuánto podrías ganar alquilándola en Airbnb?
-        <br>
-        <br> ¡Nosotros tenemos las respuestas que buscas!<br>
-        <br>
-        Ofrecemos proyecciones precisas sobre la valorización de <br>tu propiedad  y 
-        calculamos el precio ideal por noche<br> para que maximices tus ingresos en plataformas de alquiler</h3>
-          <br>
-    <div class="home_button">
-        <a href="{% url 'calculate' %}"><button type="submit" id="submit" class="btn btn-custom">Calcular valor de la propiedad</button></a>
+    <div class="home_message">
+        <h1 class="welcome_message">RealEstatePro</h1>
+        <hr>
+        <!-- <h3 class="welcome_description_message">Aqui podrás validar tus decisiones de inversión a través de análisis predictivos</h3> -->
+        <p class="about_us_message">
+            <!-- ¿Quieres conocer el valor futuro de tu vivienda o saber <br>
+            cuánto podrías ganar alquilándola en Airbnb?
+            <br>
+            <br> ¡Nosotros tenemos las respuestas que buscas!<br>
+            <br> -->
+            Ofrecemos proyecciones precisas sobre la valorización de <br>tu propiedad  y 
+            calculamos el precio ideal por noche<br> para que maximices tus ingresos en plataformas de alquiler</p>
+              <br>
+        <div class="home_button_group">
+            <div class="home_button">
+                <a href="{% url 'calculate' %}"><button type="submit" id="submit" class="btn btn-custom">Calcular valor de la propiedad</button></a>
+            </div>
+            <div class="home_button">
+                <a href="{% url 'rent' %}"><button type="submit" id="submit" class="btn btn-custom-large">Calcular valor de arrendamiento por noche</button></a>
+            </div>
+        </div>
     </div>
-    <div class="home_button">
-        <a href="{% url 'rent' %}"><button type="submit" id="submit" class="btn btn-custom">Calcular valor de arrendamiento por noche</button></a>
+    <div class="home_image">
+        <img src="{% static 'images/house.jpg' %}" alt="Fondo" class="background-image">
     </div>
 </div>
 

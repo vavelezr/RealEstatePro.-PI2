@@ -7,10 +7,13 @@
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
 {% endblock extra_css %}
-<div class="container-fluid">
-    <div class="row">
-        <h2 class="mb-4 text-center">Formulario de Proyección de Valor</h2>
-        <div class="col-md-6 d-flex flex-column align-items-start justify-content-center">
+
+<div class="calculate_form">
+    <div class="container"> 
+        <h2>Formulario de Proyección de Valor</h2>
+        
+        <!-- Contenedor del formulario -->
+        <div class="form-container">
             <form method="post">
                 {% csrf_token %}
                 <div class="row mb-3">
@@ -91,185 +94,93 @@
                 </div>
                 
             
-                <div class="row mb-3">
-                    <label for="id_wifi" class="col-sm-4 col-form-label">
-                        WiFi:
-                        <span class="tooltip-icon">
-                            ℹ
-                            <span class="tooltip-text">Marca si el inmueble cuenta con red WiFi</span>
-                        </span>
-                    </label>
-                    <div class="col-sm-8">
-                        {{ form.wifi }}
-                    </div>
-                </div>
-                
-                <div class="row mb-3">
-                    <label for="id_air_conditioner" class="col-sm-4 col-form-label">
-                        Aire acondicionado:
-                        <span class="tooltip-icon">
-                            ℹ
-                            <span class="tooltip-text">Marca si el inmueble cuenta con aire acondicionado</span>
-                        </span>
-                    </label>
-                    <div class="col-sm-8">
-                        {{ form.air_conditioner }}
-                    </div>
-                </div>
-                
-                <div class="row mb-3">
-                    <label for="id_balcony" class="col-sm-4 col-form-label">
-                        Balcón:
-                        <span class="tooltip-icon">
-                            ℹ
-                            <span class="tooltip-text">Marca si el inmueble cuenta con un balcón</span>
-                        </span>
-                    </label>
-                    <div class="col-sm-8">
-                        {{ form.balcony }}
-                    </div>
-                </div>
-            
-                <div class="row mb-3">
-                    <label for="id_terrace" class="col-sm-4 col-form-label">
-                        Terraza:
-                        <span class="tooltip-icon">
-                            ℹ
-                            <span class="tooltip-text">Marca si el inmueble cuenta con una terraza</span>
-                        </span>
-                    </label>
-                    <div class="col-sm-8">
-                        {{ form.terrace }}
-                    </div>
-                </div>
-            
-                <div class="row mb-3">
-                    <label for="id_garden" class="col-sm-4 col-form-label">
-                        Jardín:
-                        <span class="tooltip-icon">
-                            ℹ
-                            <span class="tooltip-text">Marca si el inmueble cuenta con un jardin</span>
-                        </span>
-                    </label>
-                    <div class="col-sm-8">
-                        {{ form.garden }}
-                    </div>
-                </div>
-            
-                <div class="row mb-3">
-                    <label for="id_pool" class="col-sm-4 col-form-label">
-                        Piscina:
-                        <span class="tooltip-icon">
-                            ℹ
-                            <span class="tooltip-text">Marca si el inmueble cuenta con una piscina</span>
-                        </span>
-                    </label>
-                    <div class="col-sm-8">
-                        {{ form.pool }}
-                    </div>
-                </div>
-            
-                <div class="row mb-3">
-                    <label for="id_heater" class="col-sm-4 col-form-label">
-                        Calefacción:
-                        <span class="tooltip-icon">
-                            ℹ
-                            <span class="tooltip-text">Marca si el inmueble cuenta con calefacción</span>
-                        </span>
-                    </label>
-                    <div class="col-sm-8">
-                        {{ form.heater }}
-                    </div>
-                </div>
-            
-                <div class="row mb-3">
-                    <label for="id_washing_machine" class="col-sm-4 col-form-label">
-                        Lavadora:
-                        <span class="tooltip-icon">
-                            ℹ
-                            <span class="tooltip-text">Marca si el inmueble cuenta con una lavadora</span>
-                        </span>
-                    </label>
-                    <div class="col-sm-8">
-                        {{ form.washing_machine }}
-                    </div>
-                </div>
-            
-                <div class="row mb-3">
-                    <label for="id_dryer" class="col-sm-4 col-form-label">
-                        Secadora:
-                        <span class="tooltip-icon">
-                            ℹ
-                            <span class="tooltip-text">Marca si el inmueble cuenta con una secadora</span>
-                        </span>
-                    </label>
-                    <div class="col-sm-8">
-                        {{ form.dryer }}
-                    </div>
-                </div>
-            
-                <div class="row mb-3">
-                    <label for="id_chimney" class="col-sm-4 col-form-label">
-                        Chimenea:
-                        <span class="tooltip-icon">
-                            ℹ
-                            <span class="tooltip-text">Marca si el inmueble cuenta con una chimenea</span>
-                        </span>
-                    </label>
-                    <div class="col-sm-8">
-                        {{ form.chimney }}
-                    </div>
-                </div>
-            
-                <div class="row mb-3">
-                    <label for="id_jacuzzi" class="col-sm-4 col-form-label">
-                        Jacuzzi:
-                        <span class="tooltip-icon">
-                            ℹ
-                            <span class="tooltip-text">Marca si el inmueble cuenta con un jacuzzi</span>
-                        </span>
-                    </label>
-                    <div class="col-sm-8">
-                        {{ form.jacuzzi }}
-                    </div>
-                </div>
-            
-                <div class="row mb-3">
-                    <label for="id_sauna" class="col-sm-4 col-form-label">
-                        Sauna:
-                        <span class="tooltip-icon">
-                            ℹ
-                            <span class="tooltip-text">Marca si el inmueble cuenta con un sauna</span>
-                        </span>
-                    </label>
-                    <div class="col-sm-8">
-                        {{ form.sauna }}
-                    </div>
-                </div>
-            
-                <div class="row mb-3">
-                    <label for="id_board_games" class="col-sm-4 col-form-label">
-                        Juegos de mesa:
-                        <span class="tooltip-icon">
-                            ℹ
-                            <span class="tooltip-text">Marca si el inmueble tiene juegos de mesa</span>
-                        </span>
-                    </label>
-                    <div class="col-sm-8">
-                        {{ form.board_games }}
-                    </div>
-                </div>
-            
-                <div class="row mb-3">
-                    <label for="id_parking" class="col-sm-4 col-form-label">
-                        Parqueadero:
-                        <span class="tooltip-icon">
-                            ℹ
-                            <span class="tooltip-text">Marca si el inmueble tiene incluido parqueadero</span>
-                        </span>
-                    </label>
-                    <div class="col-sm-8">
-                        {{ form.parking }}
+                <div class="row mb-3 checkbox-group">
+                    <label class="col-form-label">Comodidades:</label>
+                    <div class="checkbox-container">
+                        <label>
+                            {{ form.wifi }} WiFi
+                            <span class="tooltip-icon">ℹ
+                                <span class="tooltip-text">Marca si el inmueble cuenta con red WiFi</span>
+                            </span>
+                        </label>
+                        <label>
+                            {{ form.air_conditioner }} Aire acondicionado
+                            <span class="tooltip-icon">ℹ
+                                <span class="tooltip-text">Marca si el inmueble cuenta con aire acondicionado</span>
+                            </span>
+                        </label>
+                        <label>
+                            {{ form.balcony }} Balcón
+                            <span class="tooltip-icon">ℹ
+                                <span class="tooltip-text">Marca si el inmueble cuenta con un balcón</span>
+                            </span>
+                        </label>
+                        <label>
+                            {{ form.terrace }} Terraza
+                            <span class="tooltip-icon">ℹ
+                                <span class="tooltip-text">Marca si el inmueble cuenta con una terraza</span>
+                            </span>
+                        </label>
+                        <label>
+                            {{ form.garden }} Jardín
+                            <span class="tooltip-icon">ℹ
+                                <span class="tooltip-text">Marca si el inmueble cuenta con un jardín</span>
+                            </span>
+                        </label>
+                        <label>
+                            {{ form.pool }} Piscina
+                            <span class="tooltip-icon">ℹ
+                                <span class="tooltip-text">Marca si el inmueble cuenta con una piscina</span>
+                            </span>
+                        </label>
+                        <label>
+                            {{ form.heater }} Calefacción
+                            <span class="tooltip-icon">ℹ
+                                <span class="tooltip-text">Marca si el inmueble cuenta con calefacción</span>
+                            </span>
+                        </label>
+                        <label>
+                            {{ form.washing_machine }} Lavadora
+                            <span class="tooltip-icon">ℹ
+                                <span class="tooltip-text">Marca si el inmueble cuenta con una lavadora</span>
+                            </span>
+                        </label>
+                        <label>
+                            {{ form.dryer }} Secadora
+                            <span class="tooltip-icon">ℹ
+                                <span class="tooltip-text">Marca si el inmueble cuenta con una secadora</span>
+                            </span>
+                        </label>
+                        <label>
+                            {{ form.chimney }} Chimenea
+                            <span class="tooltip-icon">ℹ
+                                <span class="tooltip-text">Marca si el inmueble cuenta con una chimenea</span>
+                            </span>
+                        </label>
+                        <label>
+                            {{ form.jacuzzi }} Jacuzzi
+                            <span class="tooltip-icon">ℹ
+                                <span class="tooltip-text">Marca si el inmueble cuenta con un jacuzzi</span>
+                            </span>
+                        </label>
+                        <label>
+                            {{ form.sauna }} Sauna
+                            <span class="tooltip-icon">ℹ
+                                <span class="tooltip-text">Marca si el inmueble cuenta con un sauna</span>
+                            </span>
+                        </label>
+                        <label>
+                            {{ form.board_games }} Juegos de mesa
+                            <span class="tooltip-icon">ℹ
+                                <span class="tooltip-text">Marca si el inmueble tiene juegos de mesa</span>
+                            </span>
+                        </label>
+                        <label>
+                            {{ form.parking }} Parqueadero
+                            <span class="tooltip-icon">ℹ
+                                <span class="tooltip-text">Marca si el inmueble tiene incluido parqueadero</span>
+                            </span>
+                        </label>
                     </div>
                 </div>
                 
@@ -292,39 +203,28 @@
             </form>
         </div>
 
-        <!-- Sección de Botones, Gráficos y resultss a la derecha -->
-        <div class="col-md-6 d-flex flex-column align-items-center justify-content-start">
-
-            <div class="row w-100 mb-4">
-                <div class="col-md-6 text-center">
-                    <div id="grafico2" class="result-box">
-                        <h3>Valor por noche:</h3>
-                        <br>
-                        {% if results.price_per_night %}
-                            <h4>{{ results.price_per_night }}</h4>
-                        {% else %}
-                            <h5>Haz clic en el botón 'Calcular valor por noche' para mostrar el resultado</h5>
-                        {% endif %}
-                    </div>
-                </div>
-                
+        <!-- Contenedor de resultados -->
+        <div class="results-section">
+            <div class="result-box">
+                <h3>Valor por noche:</h3>
+                {% if results.price_per_night %}
+                    <p>{{ results.price_per_night }}</p>
+                {% else %}
+                    <p>Haz clic en "Calcular precio por noche" para ver el resultado</p>
+                {% endif %}
             </div>
-            <div class="row w-100 mb-4">
-                <div class="col-md-6 text-center">
-                    <div id="grafico2" class="result-box">
-                        <h3>Valor promedio del barrio seleccionado</h3>
-                        <br>
-                        {% if results.Ubicación %}
-                            <h4>{{ results.average }}</h4>
-                        {% else %}
-                            <h5>Haz clic en el botón 'Calcular valor por noche' para mostrar el resultado</h5>
-                        {% endif %}
-                    </div>
-                </div>
-                
+            <div class="result-box">
+                <h3>Valor promedio del barrio seleccionado</h3>
+                {% if results.average %}
+                    <p>{{ results.average }}</p>
+                {% else %}
+                    <p>Haz clic en "Calcular valorización futura" para ver el resultado</p>
+                {% endif %}
             </div>
         </div>
     </div>
 </div>
+
+
 
 {% endblock %}
